@@ -1,79 +1,104 @@
-# 🏗 Scaffold-ETH 2
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+# VaultManager Project README
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+## Overview
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+The VaultManager project is a decentralized finance (DeFi) application built on the Canto blockchain. It is designed to manage vaults where users can deposit Canto as collateral and mint a stablecoin, PegasusUSD, against it. The project aims to provide a robust platform for users to leverage their Canto holdings without selling them, offering a flexible way to manage debt and collateral through smart contracts.
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+## Features
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+1. High LTV with Low Minimum Collateral Requirement: Drawing inspiration from Liquity, Pegasus Finance has developed a unique redemption system that maintains a hard price floor of  $1. Unlike Liquity, this system efficiently manages the Minimum Collateral Requirement  (MCR) without significant increases:
 
-## Requirements
+ - Collateral is pooled from all vaults, allowing for pro-rated redemption from each vault, which remains efficient even with a million active vaults.
 
-Before you begin, you need to install the following tools:
+ - A controlled, small increase in MCR further disincentivizes excessive minting while maintaining system efficiency.
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+2. Negative Interest Rates: To combat the challenges of bear markets where the stablecoin's value might exceed  $1 due to low borrowing demand, Pegasus Finance introduces an effective negative interest rate mechanism:
 
-## Quickstart
+ - With each redemption, the MCR incrementally increases, reinforcing the  $1 floor but also maintaining the price above  $1 in less volatile markets.
 
-To get started with Scaffold-ETH 2, follow the steps below:
+ - The algorithm adjusts by continuously reducing the MCR to a cap of  105%, providing flexibility for those who minted at higher ranges  (120+% MCR), effectively acting as a negative interest rate to re-peg the price by increasing supply.
 
-1. Install dependencies if it was skipped in CLI:
+3. Miscellaneous Features: Designed with leverage traders in mind, the protocol supports the creation of multiple vaults, enabling users to manage various trading strategies effectively.
 
-```
-cd my-dapp-example
-yarn install
-```
+TLDR; Pegasus Finance offers an innovative approach to USD borrowing with high LTV and low MCR, maintaining stability and efficiency in the stablecoin market.
 
-2. Run a local network in the first terminal:
+## Technical Details
 
-```
-yarn chain
-```
+### Smart Contracts
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
+- **VaultManager.sol**: Main contract managing the vaults, including creation, updates, and liquidations.
+- **PegasusUSD.sol**: ERC-20 token contract for the mintable and burnable stablecoin pegged to the USD.
+- **PriceFeed Interface**: Provides real-time price data for Canto, used for calculating collateral value.
+- **Libraries**: Includes various helper libraries for fixed-point arithmetic, error handling, and constants.
 
-3. On a second terminal, deploy the test contract:
+### Key Functions
 
-```
-yarn deploy
-```
+- `createVault(uint128 initialColl)`: Create a new vault with specified initial Canto collateral.
+- `increaseVaultColl(uint vaultId, uint128 collIncrease)`: Increase the collateral in a specific vault.
+- `decreaseVaultColl(uint vaultId, uint128 collDecrease)`: Decrease the collateral in a specific vault.
+- `increaseVaultDebt(uint vaultId, uint128 debtIncrease)`: Increase the debt in a specific vault by minting PegasusUSD.
+- `decreaseVaultDebt(uint vaultId, uint128 debtDecrease)`: Decrease the debt in a specific vault by burning PegasusUSD.
+- `liquidate(address owner, uint vaultId)`: Liquidate an undercollateralized vault.
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
+### Technologies Used
 
-4. On a third terminal, start your NextJS app:
+- **Solidity**: Programming language for writing smart contracts on Canto.
+- **Hardhat**: Development environment for deployment and testing.
 
-```
-yarn start
-```
+## Installation and Setup
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+1. **Prerequisites**:
+   - Node.js and npm
+   - Git
 
-Run smart contract test with `yarn hardhat:test`
+2. **Clone the Repository**:
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
+   ```bash
+   git clone https://github.com/onyedikachi-david/pegasus-finance.git
+   cd pegasus-finance
+   ```
 
-## Documentation
+3. **Install Dependencies**:
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+   ```bash
+   yarn install
+   ```
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+4. **Compile Contracts**:
 
-## Contributing to Scaffold-ETH 2
+   ```bash
+   yarn compile
+   ```
 
-We welcome contributions to Scaffold-ETH 2!
+5. **Deploy Contracts**:
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+   ```bash
+   yarn deploy
+   ```
+
+6. **Run Tests**:
+
+   ```bash
+   yarn hardhat:test
+   ```
+
+## Demo
+
+Below are images from our demo showcasing the user interface for managing vaults:
+
+![Create Vault](./images/create_vault.png)
+*Creating a new vault*
+
+![Manage Vault](./images/manage_vault.png)
+*Managing an existing vault*
+
+## Future Work
+
+- **Integration with other DeFi protocols** on the Canto network to provide additional services like swapping, staking, and yield farming.
+- **Governance features** to allow PegasusUSD holders to vote on system parameters.
+- **Advanced liquidation mechanisms** to handle large market movements more effectively.
+
+## Conclusion
+
+The VaultManager project provides a foundational platform for leveraging Canto assets in a secure and flexible manner. It demonstrates the potential of smart contracts to revolutionize financial services by offering decentralized, transparent, and efficient solutions.

@@ -6,7 +6,7 @@ import "./dependencies/Ownable.sol";
 import "./interfaces/IERC20WithPermit.sol";
 
 contract PegasusUSD is IERC20WithPermit, Ownable {
-	string public constant name = "Neper Stablecoin";
+	string public constant name = "Pegasus Stablecoin";
 	string public constant symbol = "pUSD";
 	uint8 public constant decimals = 18;
 

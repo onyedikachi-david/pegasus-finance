@@ -7,6 +7,7 @@ import "./libraries/Errors.sol";
 import "./libraries/Constants.sol";
 import "./libraries/FixedPoint.sol";
 import "./interfaces/IPriceFeed.sol";
+import "./interfaces/IPyth.sol";
 import "./interfaces/IVaultManager.sol";
 
 contract VaultManager is IVaultManager {
@@ -33,6 +34,8 @@ contract VaultManager is IVaultManager {
 
 	IPriceFeed internal pricefeed;
 	PegasusUSD internal pegasusUSD;
+	IPyth internal pyth;
+	uint128 price;
 
 	mapping(bytes32 => Vault.State) public vaults;
 
