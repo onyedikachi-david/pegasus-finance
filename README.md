@@ -1,9 +1,9 @@
 
-# VaultManager Project README
+# Pegasus Finance
 
 ## Overview
 
-The VaultManager project is a decentralized finance (DeFi) application built on the Canto blockchain. It is designed to manage vaults where users can deposit Canto as collateral and mint a stablecoin, PegasusUSD, against it. The project aims to provide a robust platform for users to leverage their Canto holdings without selling them, offering a flexible way to manage debt and collateral through smart contracts.
+The Pegasus Finance is a decentralized finance (DeFi) application built on the Canto blockchain. It is designed to manage vaults where users can deposit Canto as collateral and mint a stablecoin, PegasusUSD, against it. The project aims to provide a robust platform for users to leverage their Canto holdings without selling them, offering a flexible way to manage debt and collateral through smart contracts.
 
 ## Features
 
@@ -101,4 +101,4 @@ Below are images from our demo showcasing the user interface for managing vaults
 
 ## Conclusion
 
-The VaultManager project provides a foundational platform for leveraging Canto assets in a secure and flexible manner. It demonstrates the potential of smart contracts to revolutionize financial services by offering decentralized, transparent, and efficient solutions.
+The Pegasus finance provides a foundational platform for leveraging Canto assets in a secure and flexible manner. It demonstrates the potential of smart contracts to revolutionize financial services by offering decentralized, transparent, and efficient solutions.
