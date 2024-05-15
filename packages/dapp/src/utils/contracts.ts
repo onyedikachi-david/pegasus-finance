@@ -4,7 +4,7 @@ import { CHAINS } from "./constants";
 import PegasusUSDABI from "../abi/PegasusUSD";
 import VaultManagerABI from "../abi/VaultManager";
 import BigNumber from "bignumber.js";
-const { WrapperBuilder } = require("@redstone-finance/evm-connector");
+// const { WrapperBuilder } = require("@redstone-finance/evm-connector");
 
 let vaultManager: ethers.Contract;
 let pegasusUSD: ethers.Contract;
@@ -13,14 +13,14 @@ export const setContracts = async (network: string) => {
   if (window.ethereum) {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const vaultManagerEthers = new ethers.Contract(
+    vaultManager = new ethers.Contract(
       CHAINS[network].contracts.vaultManager,
       JSON.stringify(VaultManagerABI),
       signer
     );
-    vaultManager = WrapperBuilder.wrap(vaultManagerEthers).usingDataService({
-      dataFeeds: ["ETH"],
-    });
+    // vaultManager = WrapperBuilder.wrap(vaultManagerEthers).usingDataService({
+    //   dataFeeds: ["ETH"],
+    // });
     pegasusUSD = new ethers.Contract(
       CHAINS[network].contracts.pegasusUSD,
       JSON.stringify(PegasusUSDABI),
