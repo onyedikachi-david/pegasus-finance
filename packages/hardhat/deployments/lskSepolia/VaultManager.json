@@ -1,0 +1,756 @@
+{
+  "address": "0xb7738817DbD16F9e588b4F493D283d1C729cd682",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "coll",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "dri",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "cri",
+          "type": "uint128"
+        }
+      ],
+      "name": "CreateVault",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "coll",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "dri",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "cri",
+          "type": "uint128"
+        }
+      ],
+      "name": "DecreaseVaultColl",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "debt",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "dri",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "cri",
+          "type": "uint128"
+        }
+      ],
+      "name": "DecreaseVaultDebt",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "coll",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "dri",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "cri",
+          "type": "uint128"
+        }
+      ],
+      "name": "IncreaseVaultColl",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "debt",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "dri",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "cri",
+          "type": "uint128"
+        }
+      ],
+      "name": "IncreaseVaultDebt",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "liquidator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Liquidate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "redeemer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "debt",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "coll",
+          "type": "uint256"
+        }
+      ],
+      "name": "Redeem",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "collLocked",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint128",
+          "name": "initialColl",
+          "type": "uint128"
+        }
+      ],
+      "name": "createVault",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint128",
+          "name": "collDecrease",
+          "type": "uint128"
+        }
+      ],
+      "name": "decreaseVaultColl",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint128",
+          "name": "debtDecrease",
+          "type": "uint128"
+        }
+      ],
+      "name": "decreaseVaultDebt",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint128",
+          "name": "collIncrease",
+          "type": "uint128"
+        }
+      ],
+      "name": "increaseVaultColl",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint128",
+          "name": "debtIncrease",
+          "type": "uint128"
+        }
+      ],
+      "name": "increaseVaultDebt",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_pricefeed",
+          "type": "address"
+        }
+      ],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastVaultId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "vaultId",
+          "type": "uint256"
+        }
+      ],
+      "name": "liquidate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minimumCollRatio",
+      "outputs": [
+        {
+          "internalType": "uint96",
+          "name": "ratio",
+          "type": "uint96"
+        },
+        {
+          "internalType": "uint96",
+          "name": "dRatio",
+          "type": "uint96"
+        },
+        {
+          "internalType": "uint64",
+          "name": "lastUpdate",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rebaseIndices",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "debtRebaseIndex",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "collRebaseIndex",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint256",
+          "name": "lastUpdate",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "debtToRedeem",
+          "type": "uint256"
+        }
+      ],
+      "name": "redeem",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "vaults",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "debt",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "collateral",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "lastDebtRebaseIndex",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "lastCollRebaseIndex",
+          "type": "uint128"
+        },
+        {
+          "internalType": "bool",
+          "name": "isActive",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x308d289e951e314e6a90205434bb997d638423bb4a83ccdbbf5f6dbeb08f5a1b",
+  "receipt": {
+    "to": null,
+    "from": "0x84CDf3112da3b1e0C43f6e4FF3886Ae4C1cc4C4B",
+    "contractAddress": "0xb7738817DbD16F9e588b4F493D283d1C729cd682",
+    "transactionIndex": 1,
+    "gasUsed": "2180990",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xc5b8c8d2a36f058d1a8cfbbb3286ae2f9d253c358a095e546a65ee0e4ed7caef",
+    "transactionHash": "0x308d289e951e314e6a90205434bb997d638423bb4a83ccdbbf5f6dbeb08f5a1b",
+    "logs": [],
+    "blockNumber": 5210974,
+    "cumulativeGasUsed": "2224865",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "de120765170a3d5f1d4c8363d3866a53",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"coll\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"dri\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"cri\",\"type\":\"uint128\"}],\"name\":\"CreateVault\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"coll\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"dri\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"cri\",\"type\":\"uint128\"}],\"name\":\"DecreaseVaultColl\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"debt\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"dri\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"cri\",\"type\":\"uint128\"}],\"name\":\"DecreaseVaultDebt\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"coll\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"dri\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"cri\",\"type\":\"uint128\"}],\"name\":\"IncreaseVaultColl\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"debt\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"dri\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"cri\",\"type\":\"uint128\"}],\"name\":\"IncreaseVaultDebt\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"liquidator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"}],\"name\":\"Liquidate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"redeemer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"debt\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"coll\",\"type\":\"uint256\"}],\"name\":\"Redeem\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"collLocked\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint128\",\"name\":\"initialColl\",\"type\":\"uint128\"}],\"name\":\"createVault\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"collDecrease\",\"type\":\"uint128\"}],\"name\":\"decreaseVaultColl\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"debtDecrease\",\"type\":\"uint128\"}],\"name\":\"decreaseVaultDebt\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"collIncrease\",\"type\":\"uint128\"}],\"name\":\"increaseVaultColl\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"debtIncrease\",\"type\":\"uint128\"}],\"name\":\"increaseVaultDebt\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_pricefeed\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastVaultId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"vaultId\",\"type\":\"uint256\"}],\"name\":\"liquidate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minimumCollRatio\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"ratio\",\"type\":\"uint96\"},{\"internalType\":\"uint96\",\"name\":\"dRatio\",\"type\":\"uint96\"},{\"internalType\":\"uint64\",\"name\":\"lastUpdate\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rebaseIndices\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"debtRebaseIndex\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"collRebaseIndex\",\"type\":\"uint128\"},{\"internalType\":\"uint256\",\"name\":\"lastUpdate\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"debtToRedeem\",\"type\":\"uint256\"}],\"name\":\"redeem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"vaults\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"debt\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"collateral\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"lastDebtRebaseIndex\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"lastCollRebaseIndex\",\"type\":\"uint128\"},{\"internalType\":\"bool\",\"name\":\"isActive\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/VaultManager.sol\":\"VaultManager\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/PegasusUSD.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.0;\\n\\nimport \\\"./libraries/Errors.sol\\\";\\nimport \\\"./dependencies/Ownable.sol\\\";\\nimport \\\"./interfaces/IERC20WithPermit.sol\\\";\\n\\ncontract PegasusUSD is IERC20WithPermit, Ownable {\\n\\tstring public constant name = \\\"Pegasus Stablecoin\\\";\\n\\tstring public constant symbol = \\\"pUSD\\\";\\n\\tuint8 public constant decimals = 18;\\n\\n\\taddress internal minter;\\n\\n\\tuint public totalSupply;\\n\\tmapping(address => uint) public balanceOf;\\n\\tmapping(address => mapping(address => uint)) public allowance;\\n\\n\\tbytes32 public DOMAIN_SEPARATOR;\\n\\tbytes32 public constant PERMIT_TYPEHASH =\\n\\t\\t0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;\\n\\tmapping(address => uint) public nonces;\\n\\n\\tconstructor() {\\n\\t\\tDOMAIN_SEPARATOR = keccak256(\\n\\t\\t\\tabi.encode(\\n\\t\\t\\t\\tkeccak256(\\n\\t\\t\\t\\t\\t\\\"EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)\\\"\\n\\t\\t\\t\\t),\\n\\t\\t\\t\\tkeccak256(bytes(name)),\\n\\t\\t\\t\\tkeccak256(bytes(\\\"1\\\")),\\n\\t\\t\\t\\tblock.chainid,\\n\\t\\t\\t\\taddress(this)\\n\\t\\t\\t)\\n\\t\\t);\\n\\t\\tminter = msg.sender;\\n\\t}\\n\\n\\tmodifier onlyMinter() {\\n\\t\\trequire(msg.sender == minter, Errors.NOT_AUTHORISED);\\n\\t\\t_;\\n\\t}\\n\\n\\tfunction updateMinter(address newMinter) external onlyOwner {\\n\\t\\tminter = newMinter;\\n\\t}\\n\\n\\tfunction mint(address to, uint value) external onlyMinter {\\n\\t\\ttotalSupply = totalSupply + value;\\n\\t\\tbalanceOf[to] = balanceOf[to] + value;\\n\\t\\temit Transfer(address(0), to, value);\\n\\t}\\n\\n\\tfunction burn(address from, uint value) external onlyMinter {\\n\\t\\tbalanceOf[from] = balanceOf[from] - value;\\n\\t\\ttotalSupply = totalSupply - value;\\n\\t\\temit Transfer(from, address(0), value);\\n\\t}\\n\\n\\tfunction _approve(address owner, address spender, uint value) private {\\n\\t\\tallowance[owner][spender] = value;\\n\\t\\temit Approval(owner, spender, value);\\n\\t}\\n\\n\\tfunction _transfer(address from, address to, uint value) private {\\n\\t\\tbalanceOf[from] = balanceOf[from] - value;\\n\\t\\tbalanceOf[to] = balanceOf[to] + value;\\n\\t\\temit Transfer(from, to, value);\\n\\t}\\n\\n\\tfunction approve(address spender, uint value) external returns (bool) {\\n\\t\\t_approve(msg.sender, spender, value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction transfer(address to, uint value) external returns (bool) {\\n\\t\\t_transfer(msg.sender, to, value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction transferFrom(\\n\\t\\taddress from,\\n\\t\\taddress to,\\n\\t\\tuint value\\n\\t) external returns (bool) {\\n\\t\\tif (allowance[from][msg.sender] != type(uint256).max) {\\n\\t\\t\\tallowance[from][msg.sender] = allowance[from][msg.sender] - value;\\n\\t\\t}\\n\\t\\t_transfer(from, to, value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction permit(\\n\\t\\taddress owner,\\n\\t\\taddress spender,\\n\\t\\tuint value,\\n\\t\\tuint deadline,\\n\\t\\tuint8 v,\\n\\t\\tbytes32 r,\\n\\t\\tbytes32 s\\n\\t) external {\\n\\t\\trequire(deadline >= block.timestamp, Errors.DEADLINE_CROSSED);\\n\\t\\tbytes32 digest = keccak256(\\n\\t\\t\\tabi.encodePacked(\\n\\t\\t\\t\\t\\\"\\\\x19\\\\x01\\\",\\n\\t\\t\\t\\tDOMAIN_SEPARATOR,\\n\\t\\t\\t\\tkeccak256(\\n\\t\\t\\t\\t\\tabi.encode(\\n\\t\\t\\t\\t\\t\\tPERMIT_TYPEHASH,\\n\\t\\t\\t\\t\\t\\towner,\\n\\t\\t\\t\\t\\t\\tspender,\\n\\t\\t\\t\\t\\t\\tvalue,\\n\\t\\t\\t\\t\\t\\tnonces[owner]++,\\n\\t\\t\\t\\t\\t\\tdeadline\\n\\t\\t\\t\\t\\t)\\n\\t\\t\\t\\t)\\n\\t\\t\\t)\\n\\t\\t);\\n\\t\\taddress recoveredAddress = ecrecover(digest, v, r, s);\\n\\t\\trequire(\\n\\t\\t\\trecoveredAddress != address(0) && recoveredAddress == owner,\\n\\t\\t\\tErrors.INVALID_SIGNATURE\\n\\t\\t);\\n\\t\\t_approve(owner, spender, value);\\n\\t}\\n}\\n\",\"keccak256\":\"0x12bdae289362efe7d1dc3f1c66e58c7ac3a5ef57fdafcbb8455ff19300e4a041\",\"license\":\"UNLICENSED\"},\"contracts/VaultManager.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.9;\\n\\nimport \\\"./PegasusUSD.sol\\\";\\nimport \\\"./libraries/Vault.sol\\\";\\nimport \\\"./libraries/Errors.sol\\\";\\nimport \\\"./libraries/Constants.sol\\\";\\nimport \\\"./libraries/FixedPoint.sol\\\";\\nimport \\\"./interfaces/IPriceFeed.sol\\\";\\nimport \\\"./interfaces/IPyth.sol\\\";\\nimport \\\"./interfaces/IVaultManager.sol\\\";\\n\\ncontract VaultManager is IVaultManager {\\n\\tusing Vault for mapping(bytes32 => Vault.State);\\n\\tusing Vault for Vault.State;\\n\\n\\tstruct RebaseIndices {\\n\\t\\tuint128 debtRebaseIndex;\\n\\t\\tuint128 collRebaseIndex;\\n\\t\\tuint lastUpdate;\\n\\t}\\n\\n\\tstruct MinimumCollRatio {\\n\\t\\tuint96 ratio;\\n\\t\\tuint96 dRatio;\\n\\t\\tuint64 lastUpdate;\\n\\t}\\n\\n\\tRebaseIndices public rebaseIndices;\\n\\tMinimumCollRatio public minimumCollRatio;\\n\\n\\tuint public lastVaultId;\\n\\tuint public collLocked;\\n\\n\\tIPriceFeed internal pricefeed;\\n\\tPegasusUSD internal pegasusUSD;\\n\\tIPyth internal pyth;\\n\\tuint128 price;\\n\\n\\tmapping(bytes32 => Vault.State) public vaults;\\n\\n\\tconstructor() {\\n\\t\\trebaseIndices = RebaseIndices(\\n\\t\\t\\tFixedPoint.Q64,\\n\\t\\t\\tFixedPoint.Q64,\\n\\t\\t\\tblock.timestamp\\n\\t\\t);\\n\\t\\tminimumCollRatio = MinimumCollRatio(\\n\\t\\t\\tuint96(Constants.BASE_MCR),\\n\\t\\t\\t0,\\n\\t\\t\\tuint64(block.timestamp)\\n\\t\\t);\\n\\t}\\n\\n\\tfunction initialize(address _pricefeed) external {\\n\\t\\trequire(address(pegasusUSD) == address(0), Errors.NOT_AUTHORISED);\\n\\t\\tpricefeed = IPriceFeed(_pricefeed);\\n\\t\\tpegasusUSD = new PegasusUSD();\\n\\t}\\n\\n\\tfunction _computeFeeDeductedDebtIndex(\\n\\t\\tuint128 debtRebaseIndex,\\n\\t\\tuint lastUpdate\\n\\t) private view returns (uint128) {\\n\\t\\tuint denom = Constants.SECONDS_IN_A_YEAR * 10000;\\n\\t\\tuint timePassed = block.timestamp - lastUpdate;\\n\\t\\treturn\\n\\t\\t\\tuint128(\\n\\t\\t\\t\\t(debtRebaseIndex *\\n\\t\\t\\t\\t\\t(denom - timePassed * Constants.BORROW_FEE_BPS)) / denom\\n\\t\\t\\t);\\n\\t}\\n\\n\\tfunction _updateRebaseIndices() private returns (RebaseIndices memory) {\\n\\t\\tRebaseIndices memory _rebaseIndices = rebaseIndices;\\n\\n\\t\\t_rebaseIndices.debtRebaseIndex = _computeFeeDeductedDebtIndex(\\n\\t\\t\\t_rebaseIndices.debtRebaseIndex,\\n\\t\\t\\t_rebaseIndices.lastUpdate\\n\\t\\t);\\n\\t\\t_rebaseIndices.lastUpdate = block.timestamp;\\n\\n\\t\\trebaseIndices = _rebaseIndices;\\n\\t\\treturn _rebaseIndices;\\n\\t}\\n\\n\\tfunction _isUnderCollateralised(\\n\\t\\tVault.State memory vault,\\n\\t\\tuint mcr,\\n\\t\\tuint price,\\n\\t\\tuint scale\\n\\t) private pure returns (bool) {\\n\\t\\tuint lhs = vault.collateral * price * FixedPoint.Q64_MUL_100;\\n\\t\\tuint rhs = mcr * vault.debt * scale;\\n\\t\\treturn lhs < rhs;\\n\\t}\\n\\n\\tfunction _touchMCR() private returns (uint) {\\n\\t\\tMinimumCollRatio memory _minimumCollRatio = minimumCollRatio;\\n\\n\\t\\tuint timePassed = block.timestamp - minimumCollRatio.lastUpdate;\\n\\t\\tuint _denom = Constants.SECONDS_IN_A_DAY * 10000;\\n\\t\\tuint denom = _denom * FixedPoint.Q64;\\n\\n\\t\\tuint updatedRatio = (_minimumCollRatio.ratio *\\n\\t\\t\\t(denom + timePassed * _minimumCollRatio.dRatio)) / denom;\\n\\t\\tuint updatedDRatio = (_minimumCollRatio.dRatio *\\n\\t\\t\\t(_denom - timePassed * Constants.CONTINUOUS_D_RATIO_DECAY)) /\\n\\t\\t\\t_denom;\\n\\n\\t\\tminimumCollRatio = MinimumCollRatio(\\n\\t\\t\\tuint96(updatedRatio),\\n\\t\\t\\tuint96(updatedDRatio),\\n\\t\\t\\tuint64(block.timestamp)\\n\\t\\t);\\n\\t\\treturn updatedRatio;\\n\\t}\\n\\n\\tfunction _touchVault(\\n\\t\\tVault.State memory vault\\n\\t) private returns (Vault.State memory) {\\n\\t\\trequire(vault.isActive, Errors.VAULT_IS_INACTIVE);\\n\\n\\t\\tRebaseIndices memory _rebaseIndices = _updateRebaseIndices();\\n\\n\\t\\tunchecked {\\n\\t\\t\\tvault.debt =\\n\\t\\t\\t\\t(vault.debt * vault.lastDebtRebaseIndex) /\\n\\t\\t\\t\\t_rebaseIndices.debtRebaseIndex;\\n\\t\\t\\tvault.collateral =\\n\\t\\t\\t\\t(vault.collateral * vault.lastCollRebaseIndex) /\\n\\t\\t\\t\\t_rebaseIndices.collRebaseIndex;\\n\\n\\t\\t\\tvault.lastCollRebaseIndex = _rebaseIndices.collRebaseIndex;\\n\\t\\t\\tvault.lastDebtRebaseIndex = _rebaseIndices.debtRebaseIndex;\\n\\t\\t}\\n\\n\\t\\treturn vault;\\n\\t}\\n\\n\\tfunction createVault(uint128 initialColl) external payable {\\n\\t\\trequire(msg.value == initialColl, Errors.INVALID_ETH_AMOUNT);\\n\\n\\t\\tRebaseIndices memory _rebaseIndices = _updateRebaseIndices();\\n\\n\\t\\tVault.State memory _vault = Vault.State({\\n\\t\\t\\tisActive: true,\\n\\t\\t\\tdebt: 0,\\n\\t\\t\\tcollateral: initialColl,\\n\\t\\t\\tlastDebtRebaseIndex: _rebaseIndices.debtRebaseIndex,\\n\\t\\t\\tlastCollRebaseIndex: _rebaseIndices.collRebaseIndex\\n\\t\\t});\\n\\n\\t\\tuint _vaultId = lastVaultId + 1;\\n\\t\\tvaults.insert(msg.sender, _vaultId, _vault);\\n\\n\\t\\tlastVaultId = _vaultId;\\n\\t\\tcollLocked += msg.value;\\n\\n\\t\\temit CreateVault(\\n\\t\\t\\tmsg.sender,\\n\\t\\t\\t_vaultId,\\n\\t\\t\\tinitialColl,\\n\\t\\t\\t_rebaseIndices.debtRebaseIndex,\\n\\t\\t\\t_rebaseIndices.collRebaseIndex\\n\\t\\t);\\n\\t}\\n\\n\\tfunction increaseVaultColl(\\n\\t\\tuint vaultId,\\n\\t\\tuint128 collIncrease\\n\\t) external payable {\\n\\t\\trequire(msg.value == collIncrease, Errors.INVALID_ETH_AMOUNT);\\n\\n\\t\\tVault.State memory vault = _touchVault(vaults.get(msg.sender, vaultId));\\n\\t\\tvault.collateral += collIncrease;\\n\\n\\t\\tcollLocked += collIncrease;\\n\\t\\tvaults.update(msg.sender, vaultId, vault);\\n\\n\\t\\temit IncreaseVaultColl(\\n\\t\\t\\tmsg.sender,\\n\\t\\t\\tvaultId,\\n\\t\\t\\tcollIncrease,\\n\\t\\t\\tvault.lastDebtRebaseIndex,\\n\\t\\t\\tvault.lastCollRebaseIndex\\n\\t\\t);\\n\\t}\\n\\n\\tfunction decreaseVaultColl(uint vaultId, uint128 collDecrease) external {\\n\\t\\tuint updatedMCR = _touchMCR();\\n\\t\\tVault.State memory vault = _touchVault(vaults.get(msg.sender, vaultId));\\n\\t\\tvault.collateral -= collDecrease;\\n\\n\\t\\trequire(\\n\\t\\t\\t!_isUnderCollateralised(\\n\\t\\t\\t\\tvault,\\n\\t\\t\\t\\tupdatedMCR,\\n\\t\\t\\t\\tpricefeed.getPrice(),\\n\\t\\t\\t\\tpricefeed.getScale()\\n\\t\\t\\t)\\n\\t\\t);\\n\\n\\t\\tcollLocked -= collDecrease;\\n\\t\\tvaults.update(msg.sender, vaultId, vault);\\n\\n\\t\\temit DecreaseVaultColl(\\n\\t\\t\\tmsg.sender,\\n\\t\\t\\tvaultId,\\n\\t\\t\\tcollDecrease,\\n\\t\\t\\tvault.lastDebtRebaseIndex,\\n\\t\\t\\tvault.lastCollRebaseIndex\\n\\t\\t);\\n\\n\\t\\t(bool sent, ) = (msg.sender).call{ value: collDecrease }(\\\"\\\");\\n\\t\\trequire(sent, Errors.FAILED_ETH_TRANSFER);\\n\\t}\\n\\n\\tfunction increaseVaultDebt(uint vaultId, uint128 debtIncrease) external {\\n\\t\\tuint updatedMCR = _touchMCR();\\n\\t\\tVault.State memory vault = _touchVault(vaults.get(msg.sender, vaultId));\\n\\t\\tvault.debt += debtIncrease;\\n\\n\\t\\trequire(\\n\\t\\t\\t!_isUnderCollateralised(\\n\\t\\t\\t\\tvault,\\n\\t\\t\\t\\tupdatedMCR,\\n\\t\\t\\t\\tpricefeed.getPrice(),\\n\\t\\t\\t\\tpricefeed.getScale()\\n\\t\\t\\t)\\n\\t\\t);\\n\\t\\tvaults.update(msg.sender, vaultId, vault);\\n\\n\\t\\temit IncreaseVaultDebt(\\n\\t\\t\\tmsg.sender,\\n\\t\\t\\tvaultId,\\n\\t\\t\\tdebtIncrease,\\n\\t\\t\\tvault.lastDebtRebaseIndex,\\n\\t\\t\\tvault.lastCollRebaseIndex\\n\\t\\t);\\n\\n\\t\\tpegasusUSD.mint(msg.sender, debtIncrease);\\n\\t}\\n\\n\\tfunction decreaseVaultDebt(uint vaultId, uint128 debtDecrease) external {\\n\\t\\tVault.State memory vault = _touchVault(vaults.get(msg.sender, vaultId));\\n\\n\\t\\tvault.debt -= debtDecrease;\\n\\t\\tvaults.update(msg.sender, vaultId, vault);\\n\\n\\t\\temit DecreaseVaultDebt(\\n\\t\\t\\tmsg.sender,\\n\\t\\t\\tvaultId,\\n\\t\\t\\tdebtDecrease,\\n\\t\\t\\tvault.lastDebtRebaseIndex,\\n\\t\\t\\tvault.lastCollRebaseIndex\\n\\t\\t);\\n\\n\\t\\tpegasusUSD.burn(msg.sender, debtDecrease);\\n\\t}\\n\\n\\tfunction liquidate(address owner, uint vaultId) external {\\n\\t\\tuint updatedMCR = _touchMCR();\\n\\t\\tVault.State memory vault = _touchVault(vaults.get(owner, vaultId));\\n\\n\\t\\trequire(\\n\\t\\t\\t_isUnderCollateralised(\\n\\t\\t\\t\\tvault,\\n\\t\\t\\t\\tupdatedMCR,\\n\\t\\t\\t\\tpricefeed.getPrice(),\\n\\t\\t\\t\\tpricefeed.getScale()\\n\\t\\t\\t),\\n\\t\\t\\tErrors.VAULT_IS_NOT_UNDERCOLLATERALISED\\n\\t\\t);\\n\\t\\tvault.isActive = false;\\n\\n\\t\\tcollLocked -= vault.collateral;\\n\\t\\tvaults.update(owner, vaultId, vault);\\n\\n\\t\\temit Liquidate(msg.sender, owner, vaultId);\\n\\n\\t\\tpegasusUSD.burn(msg.sender, vault.debt);\\n\\n\\t\\t(bool sent, ) = (msg.sender).call{ value: vault.collateral }(\\\"\\\");\\n\\t\\trequire(sent, Errors.FAILED_ETH_TRANSFER);\\n\\t}\\n\\n\\tfunction redeem(uint debtToRedeem) external {\\n\\t\\t(uint price, uint scale) = (pricefeed.getPrice(), pricefeed.getScale());\\n\\t\\tuint collAmount = (debtToRedeem * scale) / price;\\n\\n\\t\\tRebaseIndices memory _rebaseIndices = rebaseIndices;\\n\\t\\t_rebaseIndices.debtRebaseIndex = _computeFeeDeductedDebtIndex(\\n\\t\\t\\t_rebaseIndices.debtRebaseIndex,\\n\\t\\t\\t_rebaseIndices.lastUpdate\\n\\t\\t);\\n\\n\\t\\tuint debtSupply = pegasusUSD.totalSupply();\\n\\t\\tuint _collLocked = collLocked;\\n\\n\\t\\tuint updatedDebt = debtSupply - debtToRedeem;\\n\\t\\tuint updatedColl = _collLocked - collAmount;\\n\\n\\t\\t_rebaseIndices.debtRebaseIndex = uint128(\\n\\t\\t\\t(debtSupply * _rebaseIndices.debtRebaseIndex) / updatedDebt\\n\\t\\t);\\n\\t\\t_rebaseIndices.collRebaseIndex = uint128(\\n\\t\\t\\t(collLocked * _rebaseIndices.collRebaseIndex) / updatedColl\\n\\t\\t);\\n\\n\\t\\tuint denom = debtSupply * 10000;\\n\\t\\tuint _leftOp = denom * minimumCollRatio.dRatio;\\n\\t\\tuint _rightOP = Constants.MAX_REDEMPTION_D_RATIO_BUMP * debtToRedeem;\\n\\n\\t\\tminimumCollRatio.dRatio += uint96((_leftOp + _rightOP) / denom);\\n\\t\\trebaseIndices = _rebaseIndices;\\n\\n\\t\\temit Redeem(msg.sender, debtToRedeem, collAmount);\\n\\n\\t\\tpegasusUSD.burn(msg.sender, debtToRedeem);\\n\\n\\t\\t(bool sent, ) = (msg.sender).call{ value: collAmount }(\\\"\\\");\\n\\t\\trequire(sent, Errors.FAILED_ETH_TRANSFER);\\n\\t}\\n}\\n\",\"keccak256\":\"0x8e12a1f2de02a26ab14c4231339b6b89ba1f8b4b890dfb7e314189548636e04b\",\"license\":\"UNLICENSED\"},\"contracts/dependencies/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.9;\\n\\n/**\\n * Based on OpenZeppelin's Ownable contract:\\n * https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol\\n *\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\ncontract Ownable {\\n    address private _owner;\\n\\n    event OwnershipTransferred(\\n        address indexed previousOwner,\\n        address indexed newOwner\\n    );\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _owner = msg.sender;\\n        emit OwnershipTransferred(address(0), msg.sender);\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        require(isOwner(), \\\"Ownable: caller is not the owner\\\");\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns true if the caller is the current owner.\\n     */\\n    function isOwner() public view returns (bool) {\\n        return msg.sender == _owner;\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions anymore.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby removing any functionality that is only available to the owner.\\n     *\\n     * NOTE: This function is not safe, as it doesn\\u2019t check owner is calling it.\\n     * Make sure you check it before calling it.\\n     */\\n    function _renounceOwnership() internal {\\n        emit OwnershipTransferred(_owner, address(0));\\n        _owner = address(0);\\n    }\\n}\\n\",\"keccak256\":\"0x8d05c43ce5bcac37c13169fbb5a8a7085cc015f0866e26b92b7f216f63e8d676\",\"license\":\"MIT\"},\"contracts/interfaces/IERC20WithPermit.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.9;\\n\\ninterface IERC20WithPermit {\\n    // -- Events --\\n    event Approval(address indexed owner, address indexed spender, uint value);\\n    event Transfer(address indexed from, address indexed to, uint value);\\n\\n    // -- Functions --\\n    function name() external pure returns (string memory);\\n\\n    function symbol() external pure returns (string memory);\\n\\n    function decimals() external pure returns (uint8);\\n\\n    function totalSupply() external view returns (uint);\\n\\n    function balanceOf(address owner) external view returns (uint);\\n\\n    function allowance(\\n        address owner,\\n        address spender\\n    ) external view returns (uint);\\n\\n    function mint(address to, uint value) external;\\n\\n    function burn(address from, uint value) external;\\n\\n    function approve(address spender, uint value) external returns (bool);\\n\\n    function transfer(address to, uint value) external returns (bool);\\n\\n    function transferFrom(\\n        address from,\\n        address to,\\n        uint value\\n    ) external returns (bool);\\n\\n    function DOMAIN_SEPARATOR() external view returns (bytes32);\\n\\n    function PERMIT_TYPEHASH() external pure returns (bytes32);\\n\\n    function nonces(address owner) external view returns (uint);\\n\\n    function permit(\\n        address owner,\\n        address spender,\\n        uint value,\\n        uint deadline,\\n        uint8 v,\\n        bytes32 r,\\n        bytes32 s\\n    ) external;\\n}\\n\",\"keccak256\":\"0x1f0eba2e12afb26e448df4ca469d5c8da18e8caa5c1e29ed85f450a406ea8540\",\"license\":\"UNLICENSED\"},\"contracts/interfaces/IPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.9;\\n\\ninterface IPriceFeed {\\n\\t// -- Events --\\n\\tevent UpdatePrice(uint128 updatedAt, uint128 price);\\n\\n\\t// -- Functions --\\n\\tfunction getPrice() external view returns (uint256);\\n\\n\\tfunction getScale() external view returns (uint);\\n}\\n\",\"keccak256\":\"0x83ccb6ce8c462af3b889e6feac98b24b797f23369d5430820c44f4be555c2d6b\",\"license\":\"UNLICENSED\"},\"contracts/interfaces/IPyth.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity ^0.8.0;\\n\\nimport \\\"../libraries/PythStructs.sol\\\";\\nimport \\\"./IPythEvents.sol\\\";\\n\\n/// @title Consume prices from the Pyth Network (https://pyth.network/).\\n/// @dev Please refer to the guidance at https://docs.pyth.network/documentation/pythnet-price-feeds/best-practices for how to consume prices safely.\\n/// @author Pyth Data Association\\ninterface IPyth is IPythEvents {\\n\\t/// @notice Returns the period (in seconds) that a price feed is considered valid since its publish time\\n\\tfunction getValidTimePeriod() external view returns (uint validTimePeriod);\\n\\n\\t/// @notice Returns the price and confidence interval.\\n\\t/// @dev Reverts if the price has not been updated within the last `getValidTimePeriod()` seconds.\\n\\t/// @param id The Pyth Price Feed ID of which to fetch the price and confidence interval.\\n\\t/// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n\\tfunction getPrice(\\n\\t\\tbytes32 id\\n\\t) external view returns (PythStructs.Price memory price);\\n\\n\\t/// @notice Returns the exponentially-weighted moving average price and confidence interval.\\n\\t/// @dev Reverts if the EMA price is not available.\\n\\t/// @param id The Pyth Price Feed ID of which to fetch the EMA price and confidence interval.\\n\\t/// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n\\tfunction getEmaPrice(\\n\\t\\tbytes32 id\\n\\t) external view returns (PythStructs.Price memory price);\\n\\n\\t/// @notice Returns the price of a price feed without any sanity checks.\\n\\t/// @dev This function returns the most recent price update in this contract without any recency checks.\\n\\t/// This function is unsafe as the returned price update may be arbitrarily far in the past.\\n\\t///\\n\\t/// Users of this function should check the `publishTime` in the price to ensure that the returned price is\\n\\t/// sufficiently recent for their application. If you are considering using this function, it may be\\n\\t/// safer / easier to use either `getPrice` or `getPriceNoOlderThan`.\\n\\t/// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n\\tfunction getPriceUnsafe(\\n\\t\\tbytes32 id\\n\\t) external view returns (PythStructs.Price memory price);\\n\\n\\t/// @notice Returns the price that is no older than `age` seconds of the current time.\\n\\t/// @dev This function is a sanity-checked version of `getPriceUnsafe` which is useful in\\n\\t/// applications that require a sufficiently-recent price. Reverts if the price wasn't updated sufficiently\\n\\t/// recently.\\n\\t/// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n\\tfunction getPriceNoOlderThan(\\n\\t\\tbytes32 id,\\n\\t\\tuint age\\n\\t) external view returns (PythStructs.Price memory price);\\n\\n\\t/// @notice Returns the exponentially-weighted moving average price of a price feed without any sanity checks.\\n\\t/// @dev This function returns the same price as `getEmaPrice` in the case where the price is available.\\n\\t/// However, if the price is not recent this function returns the latest available price.\\n\\t///\\n\\t/// The returned price can be from arbitrarily far in the past; this function makes no guarantees that\\n\\t/// the returned price is recent or useful for any particular application.\\n\\t///\\n\\t/// Users of this function should check the `publishTime` in the price to ensure that the returned price is\\n\\t/// sufficiently recent for their application. If you are considering using this function, it may be\\n\\t/// safer / easier to use either `getEmaPrice` or `getEmaPriceNoOlderThan`.\\n\\t/// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n\\tfunction getEmaPriceUnsafe(\\n\\t\\tbytes32 id\\n\\t) external view returns (PythStructs.Price memory price);\\n\\n\\t/// @notice Returns the exponentially-weighted moving average price that is no older than `age` seconds\\n\\t/// of the current time.\\n\\t/// @dev This function is a sanity-checked version of `getEmaPriceUnsafe` which is useful in\\n\\t/// applications that require a sufficiently-recent price. Reverts if the price wasn't updated sufficiently\\n\\t/// recently.\\n\\t/// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n\\tfunction getEmaPriceNoOlderThan(\\n\\t\\tbytes32 id,\\n\\t\\tuint age\\n\\t) external view returns (PythStructs.Price memory price);\\n\\n\\t/// @notice Update price feeds with given update messages.\\n\\t/// This method requires the caller to pay a fee in wei; the required fee can be computed by calling\\n\\t/// `getUpdateFee` with the length of the `updateData` array.\\n\\t/// Prices will be updated if they are more recent than the current stored prices.\\n\\t/// The call will succeed even if the update is not the most recent.\\n\\t/// @dev Reverts if the transferred fee is not sufficient or the updateData is invalid.\\n\\t/// @param updateData Array of price update data.\\n\\tfunction updatePriceFeeds(bytes[] calldata updateData) external payable;\\n\\n\\t/// @notice Wrapper around updatePriceFeeds that rejects fast if a price update is not necessary. A price update is\\n\\t/// necessary if the current on-chain publishTime is older than the given publishTime. It relies solely on the\\n\\t/// given `publishTimes` for the price feeds and does not read the actual price update publish time within `updateData`.\\n\\t///\\n\\t/// This method requires the caller to pay a fee in wei; the required fee can be computed by calling\\n\\t/// `getUpdateFee` with the length of the `updateData` array.\\n\\t///\\n\\t/// `priceIds` and `publishTimes` are two arrays with the same size that correspond to senders known publishTime\\n\\t/// of each priceId when calling this method. If all of price feeds within `priceIds` have updated and have\\n\\t/// a newer or equal publish time than the given publish time, it will reject the transaction to save gas.\\n\\t/// Otherwise, it calls updatePriceFeeds method to update the prices.\\n\\t///\\n\\t/// @dev Reverts if update is not needed or the transferred fee is not sufficient or the updateData is invalid.\\n\\t/// @param updateData Array of price update data.\\n\\t/// @param priceIds Array of price ids.\\n\\t/// @param publishTimes Array of publishTimes. `publishTimes[i]` corresponds to known `publishTime` of `priceIds[i]`\\n\\tfunction updatePriceFeedsIfNecessary(\\n\\t\\tbytes[] calldata updateData,\\n\\t\\tbytes32[] calldata priceIds,\\n\\t\\tuint64[] calldata publishTimes\\n\\t) external payable;\\n\\n\\t/// @notice Returns the required fee to update an array of price updates.\\n\\t/// @param updateData Array of price update data.\\n\\t/// @return feeAmount The required fee in Wei.\\n\\tfunction getUpdateFee(\\n\\t\\tbytes[] calldata updateData\\n\\t) external view returns (uint feeAmount);\\n\\n\\t/// @notice Parse `updateData` and return price feeds of the given `priceIds` if they are all published\\n\\t/// within `minPublishTime` and `maxPublishTime`.\\n\\t///\\n\\t/// You can use this method if you want to use a Pyth price at a fixed time and not the most recent price;\\n\\t/// otherwise, please consider using `updatePriceFeeds`. This method may store the price updates on-chain, if they\\n\\t/// are more recent than the current stored prices.\\n\\t///\\n\\t/// This method requires the caller to pay a fee in wei; the required fee can be computed by calling\\n\\t/// `getUpdateFee` with the length of the `updateData` array.\\n\\t///\\n\\t///\\n\\t/// @dev Reverts if the transferred fee is not sufficient or the updateData is invalid or there is\\n\\t/// no update for any of the given `priceIds` within the given time range.\\n\\t/// @param updateData Array of price update data.\\n\\t/// @param priceIds Array of price ids.\\n\\t/// @param minPublishTime minimum acceptable publishTime for the given `priceIds`.\\n\\t/// @param maxPublishTime maximum acceptable publishTime for the given `priceIds`.\\n\\t/// @return priceFeeds Array of the price feeds corresponding to the given `priceIds` (with the same order).\\n\\tfunction parsePriceFeedUpdates(\\n\\t\\tbytes[] calldata updateData,\\n\\t\\tbytes32[] calldata priceIds,\\n\\t\\tuint64 minPublishTime,\\n\\t\\tuint64 maxPublishTime\\n\\t) external payable returns (PythStructs.PriceFeed[] memory priceFeeds);\\n\\n\\t/// @notice Similar to `parsePriceFeedUpdates` but ensures the updates returned are\\n\\t/// the first updates published in minPublishTime. That is, if there are multiple updates for a given timestamp,\\n\\t/// this method will return the first update. This method may store the price updates on-chain, if they\\n\\t/// are more recent than the current stored prices.\\n\\t///\\n\\t///\\n\\t/// @dev Reverts if the transferred fee is not sufficient or the updateData is invalid or there is\\n\\t/// no update for any of the given `priceIds` within the given time range and uniqueness condition.\\n\\t/// @param updateData Array of price update data.\\n\\t/// @param priceIds Array of price ids.\\n\\t/// @param minPublishTime minimum acceptable publishTime for the given `priceIds`.\\n\\t/// @param maxPublishTime maximum acceptable publishTime for the given `priceIds`.\\n\\t/// @return priceFeeds Array of the price feeds corresponding to the given `priceIds` (with the same order).\\n\\tfunction parsePriceFeedUpdatesUnique(\\n\\t\\tbytes[] calldata updateData,\\n\\t\\tbytes32[] calldata priceIds,\\n\\t\\tuint64 minPublishTime,\\n\\t\\tuint64 maxPublishTime\\n\\t) external payable returns (PythStructs.PriceFeed[] memory priceFeeds);\\n}\\n\",\"keccak256\":\"0x6dd77b9afc62caac9c9ff6b62b84045c524cf012f2f2728072f072e66ab647bc\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/IPythEvents.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity ^0.8.0;\\n\\n/// @title IPythEvents contains the events that Pyth contract emits.\\n/// @dev This interface can be used for listening to the updates for off-chain and testing purposes.\\ninterface IPythEvents {\\n\\t/// @dev Emitted when the price feed with `id` has received a fresh update.\\n\\t/// @param id The Pyth Price Feed ID.\\n\\t/// @param publishTime Publish time of the given price update.\\n\\t/// @param price Price of the given price update.\\n\\t/// @param conf Confidence interval of the given price update.\\n\\tevent PriceFeedUpdate(\\n\\t\\tbytes32 indexed id,\\n\\t\\tuint64 publishTime,\\n\\t\\tint64 price,\\n\\t\\tuint64 conf\\n\\t);\\n}\\n\",\"keccak256\":\"0xeb6fa85143b88321809f4a49f1201456c7fe8c1cd93c3ac91c35ea320f60ed24\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/IVaultManager.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.9;\\n\\ninterface IVaultManager {\\n    // --- Events ---\\n    event CreateVault(address indexed owner, uint vaultId, uint128 coll, uint128 dri, uint128 cri);\\n    event IncreaseVaultColl(address indexed owner, uint vaultId, uint128 coll, uint128 dri, uint128 cri);\\n    event DecreaseVaultColl(address indexed owner, uint vaultId, uint128 coll, uint128 dri, uint128 cri);\\n    event IncreaseVaultDebt(address indexed owner, uint vaultId, uint128 debt, uint128 dri, uint128 cri);\\n    event DecreaseVaultDebt(address indexed owner, uint vaultId, uint128 debt, uint128 dri, uint128 cri);\\n    event Liquidate(address indexed liquidator, address indexed owner, uint vaultId);\\n    event Redeem(address indexed redeemer, uint debt, uint coll);\\n\\n    function createVault(uint128 initialColl) external payable;\\n\\n    function increaseVaultColl(uint vaultId, uint128 collIncrease) external payable;\\n\\n    function decreaseVaultColl(uint vaultId, uint128 collDecrease) external;\\n\\n    function increaseVaultDebt(uint vaultId, uint128 debtIncrease) external;\\n\\n    function decreaseVaultDebt(uint vaultId, uint128 debtDecrease) external;\\n\\n    function liquidate(address owner, uint vaultId) external;\\n\\n    function redeem(uint debtToRedeem) external;\\n}\\n\",\"keccak256\":\"0x08107318778bb3849977a8ff4cf1538d50b0d12656d57b5e418b0e6fb50bd6db\",\"license\":\"UNLICENSED\"},\"contracts/libraries/Constants.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.0;\\n\\nimport \\\"./FixedPoint.sol\\\";\\n\\nlibrary Constants {\\n    uint internal constant BORROW_FEE_BPS = 500;\\n\\n    uint internal constant BASE_MCR = 105 * FixedPoint.Q64;\\n\\n    uint internal constant MAX_REDEMPTION_D_RATIO_BUMP = 500 * FixedPoint.Q64;\\n\\n    uint internal constant CONTINUOUS_D_RATIO_DECAY = 10;\\n\\n    uint internal constant SECONDS_IN_A_YEAR = 86400 * 365;\\n    uint internal constant SECONDS_IN_A_DAY = 86400;\\n}\\n\",\"keccak256\":\"0xf4fa02d7d9957745aaa8e54064838727bd8ccf71d423322003ffce93105b2811\",\"license\":\"UNLICENSED\"},\"contracts/libraries/Errors.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\n\\npragma solidity ^0.8.9;\\n\\nlibrary Errors {\\n    string constant NOT_AUTHORISED = \\\"0\\\";\\n    string constant INVALID_ETH_AMOUNT = \\\"1\\\";\\n    string constant UNDER_COLLATERALISED_VAULT = \\\"2\\\";\\n    string constant DEADLINE_CROSSED = \\\"3\\\";\\n    string constant INVALID_SIGNATURE = \\\"4\\\";\\n    string constant FAILED_ETH_TRANSFER = \\\"5\\\";\\n    string constant VAULT_IS_INACTIVE = \\\"6\\\";\\n    string constant VAULT_IS_NOT_UNDERCOLLATERALISED = \\\"7\\\";\\n    string constant VAULT_IS_ACTIVE = \\\"8\\\";\\n}\\n\",\"keccak256\":\"0xd292b122780ab849544a925edd2a781c2ecac45c56fc27ef177e01b15410983d\",\"license\":\"UNLICENSED\"},\"contracts/libraries/FixedPoint.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.0;\\n\\nlibrary FixedPoint {\\n    uint128 internal constant Q64 = 0x10000000000000000;\\n    uint internal constant Q64_MUL_100 = 100 * Q64;\\n}\\n\",\"keccak256\":\"0x4efc7517f6e81d190df361ce81e6721b0ee5ce700468c2971c70aaa77858bb54\",\"license\":\"UNLICENSED\"},\"contracts/libraries/PythStructs.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity ^0.8.0;\\n\\ncontract PythStructs {\\n\\t// A price with a degree of uncertainty, represented as a price +- a confidence interval.\\n\\t//\\n\\t// The confidence interval roughly corresponds to the standard error of a normal distribution.\\n\\t// Both the price and confidence are stored in a fixed-point numeric representation,\\n\\t// `x * (10^expo)`, where `expo` is the exponent.\\n\\t//\\n\\t// Please refer to the documentation at https://docs.pyth.network/documentation/pythnet-price-feeds/best-practices for how\\n\\t// to how this price safely.\\n\\tstruct Price {\\n\\t\\t// Price\\n\\t\\tint64 price;\\n\\t\\t// Confidence interval around the price\\n\\t\\tuint64 conf;\\n\\t\\t// Price exponent\\n\\t\\tint32 expo;\\n\\t\\t// Unix timestamp describing when the price was published\\n\\t\\tuint publishTime;\\n\\t}\\n\\n\\t// PriceFeed represents a current aggregate price from pyth publisher feeds.\\n\\tstruct PriceFeed {\\n\\t\\t// The price ID.\\n\\t\\tbytes32 id;\\n\\t\\t// Latest available price\\n\\t\\tPrice price;\\n\\t\\t// Latest available exponentially-weighted moving average price\\n\\t\\tPrice emaPrice;\\n\\t}\\n}\\n\",\"keccak256\":\"0xa1309b6126bd38fe45cd8fe64b02c02d76d1b9d582481a9c99a6d30adbb38809\",\"license\":\"Apache-2.0\"},\"contracts/libraries/Vault.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.9;\\n\\nimport \\\"./FixedPoint.sol\\\";\\n\\nlibrary Vault {\\n    struct State {\\n        uint128 debt;\\n        uint128 collateral;\\n        uint128 lastDebtRebaseIndex;\\n        uint128 lastCollRebaseIndex;\\n        bool isActive;\\n    }\\n\\n    function computeKey(address addr, uint id) internal pure returns (bytes32) {\\n        return keccak256(abi.encodePacked(addr, id));\\n    }\\n\\n    function get(\\n        mapping(bytes32 => State) storage self,\\n        address owner,\\n        uint vaultId\\n    ) internal view returns (State storage vault) {\\n        return self[computeKey(owner, vaultId)];\\n    }\\n\\n    function insert(mapping(bytes32 => State) storage self, address owner, uint vaultId, State memory vault) internal {\\n        self[computeKey(owner, vaultId)] = vault;\\n    }\\n\\n    function update(mapping(bytes32 => State) storage self, address owner, uint vaultId, State memory vault) internal {\\n        self[computeKey(owner, vaultId)] = vault;\\n    }\\n}\\n\",\"keccak256\":\"0x9537fc661f94d64d91dc696462214da95faf491a758c4c5e7c835876c4206e0a\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604080516060808201835268010000000000000000808352602083018190524292840183905278010000000000000000000000000000000100000000000000006000556001929092558251908101909252819061006f9060696100eb565b6001600160601b03908116825260006020808401919091526001600160401b03428116604094850152845160028054938701519690950151909116600160c01b026001600160c01b039584166c01000000000000000000000000026001600160c01b031990931691909316171792909216919091179055610124565b6001600160801b0381811683821602808216919082811461011c57634e487b7160e01b600052601160045260246000fd5b505092915050565b612533806101336000396000f3fe6080604052600436106100c25760003560e01c8063b303ed3e1161007f578063c4d66de811610059578063c4d66de814610260578063cca23bf214610280578063d53bf23114610319578063db006a751461032c57600080fd5b8063b303ed3e146101ca578063b6c02c5314610220578063bcbaf4871461024057600080fd5b8063541ce9f9146100c75780635fd000f61461013b57806364f248e81461015f57806371a454fa1461017457806382b012f614610194578063a1b73c6d146101aa575b600080fd5b3480156100d357600080fd5b50600254610106906001600160601b0380821691600160601b810490911690600160c01b900467ffffffffffffffff1683565b604080516001600160601b03948516815293909216602084015267ffffffffffffffff16908201526060015b60405180910390f35b34801561014757600080fd5b5061015160045481565b604051908152602001610132565b61017261016d366004611600565b61034c565b005b34801561018057600080fd5b5061017261018f366004611622565b610487565b3480156101a057600080fd5b5061015160035481565b3480156101b657600080fd5b506101726101c5366004611622565b6106dd565b3480156101d657600080fd5b506000546001546101fa916001600160801b0380821692600160801b909204169083565b604080516001600160801b03948516815293909216602084015290820152606001610132565b34801561022c57600080fd5b5061017261023b366004611622565b6107d3565b34801561024c57600080fd5b5061017261025b366004611665565b61098a565b34801561026c57600080fd5b5061017261027b36600461168f565b610b3f565b34801561028c57600080fd5b506102de61029b3660046116aa565b6009602052600090815260409020805460018201546002909201546001600160801b0380831693600160801b938490048216938183169391049091169060ff1685565b604080516001600160801b0396871681529486166020860152928516928401929092529092166060820152901515608082015260a001610132565b610172610327366004611622565b610bea565b34801561033857600080fd5b506101726103473660046116aa565b610cde565b6040805180820190915260018152603160f81b6020820152346001600160801b038316146103965760405162461bcd60e51b815260040161038d91906116c3565b60405180910390fd5b5060006103a1611138565b905060006040518060a0016040528060006001600160801b03168152602001846001600160801b0316815260200183600001516001600160801b0316815260200183602001516001600160801b031681526020016001151581525090506000600354600161040f9190611727565b905061041e60093383856111c3565b8060038190555034600460008282546104379190611727565b90915550508251602084015160405133927fa02f9376a1f003e30f12b573dcf7a99ae2607b5cf56fbf5dee0383228415978e926104799286928a92909161173a565b60405180910390a250505050565b600061049161123c565b905060006104fb6104a46009338761139f565b6040805160a08101825282546001600160801b038082168352600160801b91829004811660208401526001850154808216948401949094529204909116606082015260029091015460ff16151560808201526113c5565b9050828160000181815161050f9190611761565b6001600160801b031690525060055460408051634c6afee560e11b8152905161060d92849286926001600160a01b03909216916398d5fdca916004808201926020929091908290030181865afa15801561056d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105919190611788565b600560009054906101000a90046001600160a01b03166001600160a01b031663b5cddab86040518163ffffffff1660e01b8152600401602060405180830381865afa1580156105e4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106089190611788565b6114bb565b1561061757600080fd5b61062460093386846111c3565b336001600160a01b03167f232cbdfd6582521a06ac79bed2ac190979061faac72582f7f5e6c952ed26edea85858460400151856060015160405161066b949392919061173a565b60405180910390a26006546040516340c10f1960e01b81526001600160a01b03909116906340c10f19906106a590339087906004016117a1565b600060405180830381600087803b1580156106bf57600080fd5b505af11580156106d3573d6000803e3d6000fd5b5050505050505050565b60006106ee6104a46009338661139f565b9050818160000181815161070291906117c3565b6001600160801b031690525061071b60093385846111c3565b336001600160a01b03167f7cdcc5af821891e1d43bf859c7a221de2533f377030d7c5cafd81057dd403f15848484604001518560600151604051610762949392919061173a565b60405180910390a2600654604051632770a7eb60e21b81526001600160a01b0390911690639dc29fac9061079c90339086906004016117a1565b600060405180830381600087803b1580156107b657600080fd5b505af11580156107ca573d6000803e3d6000fd5b50505050505050565b60006107dd61123c565b905060006107f06104a46009338761139f565b9050828160200181815161080491906117c3565b6001600160801b031690525060055460408051634c6afee560e11b8152905161086292849286926001600160a01b03909216916398d5fdca916004808201926020929091908290030181865afa15801561056d573d6000803e3d6000fd5b1561086c57600080fd5b826001600160801b03166004600082825461088791906117e3565b9091555061089a905060093386846111c3565b336001600160a01b03167ff34b33e9c452e748ad708279471ec50823775c428f1f290f6c1289fdca7b0fb58585846040015185606001516040516108e1949392919061173a565b60405180910390a26000336001600160a01b0316846001600160801b03166040515b60006040518083038185875af1925050503d8060008114610940576040519150601f19603f3d011682016040523d82523d6000602084013e610945565b606091505b5050905080604051806040016040528060018152602001603560f81b815250906109825760405162461bcd60e51b815260040161038d91906116c3565b505050505050565b600061099461123c565b905060006109a76104a46009868661139f565b9050610a018183600560009054906101000a90046001600160a01b03166001600160a01b03166398d5fdca6040518163ffffffff1660e01b8152600401602060405180830381865afa15801561056d573d6000803e3d6000fd5b604051806040016040528060018152602001603760f81b81525090610a395760405162461bcd60e51b815260040161038d91906116c3565b506000608082018190526020820151600480546001600160801b03909216929091610a659084906117e3565b90915550610a78905060098585846111c3565b6040518381526001600160a01b0385169033907faef3faf684172084346f7dc2cc3bb1328d1cc23caec12dd9a82d4a4e56c00b179060200160405180910390a36006548151604051632770a7eb60e21b81526001600160a01b0390921691639dc29fac91610aeb913391906004016117a1565b600060405180830381600087803b158015610b0557600080fd5b505af1158015610b19573d6000803e3d6000fd5b505050506000336001600160a01b031682602001516001600160801b0316604051610903565b6006546040805180820190915260018152600360fc1b6020820152906001600160a01b031615610b825760405162461bcd60e51b815260040161038d91906116c3565b50600580546001600160a01b0319166001600160a01b038316179055604051610baa906115d7565b604051809103906000f080158015610bc6573d6000803e3d6000fd5b50600680546001600160a01b0319166001600160a01b039290921691909117905550565b6040805180820190915260018152603160f81b6020820152346001600160801b03831614610c2b5760405162461bcd60e51b815260040161038d91906116c3565b506000610c3d6104a46009338661139f565b90508181602001818151610c519190611761565b6001600160801b0390811690915260048054918516925090600090610c77908490611727565b90915550610c8a905060093385846111c3565b336001600160a01b03167f68b234653c61dd8426f429013f53cd43776a5855a2453189bb31a1c8195a3836848484604001518560600151604051610cd1949392919061173a565b60405180910390a2505050565b600080600560009054906101000a90046001600160a01b03166001600160a01b03166398d5fdca6040518163ffffffff1660e01b8152600401602060405180830381865afa158015610d34573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d589190611788565b600560009054906101000a90046001600160a01b03166001600160a01b031663b5cddab86040518163ffffffff1660e01b8152600401602060405180830381865afa158015610dab573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610dcf9190611788565b9092509050600082610de183866117f6565b610deb9190611823565b604080516060810182526000546001600160801b03808216808452600160801b90920416602083015260015492820183905292935091610e2a9161152e565b6001600160801b03168152600654604080516318160ddd60e01b815290516000926001600160a01b0316916318160ddd9160048083019260209291908290030181865afa158015610e7f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ea39190611788565b6004549091506000610eb588846117e3565b90506000610ec386846117e3565b85519091508290610edd906001600160801b0316866117f6565b610ee79190611823565b6001600160801b03908116865260208601516004548392610f099216906117f6565b610f139190611823565b6001600160801b031660208601526000610f2f856127106117f6565b600254909150600090610f5290600160601b90046001600160601b0316836117f6565b905060008b610f67600160401b6101f4611845565b6001600160801b0316610f7a91906117f6565b905082610f878284611727565b610f919190611823565b60028054600c90610fb3908490600160601b90046001600160601b0316611870565b82546001600160601b039182166101009390930a928302919092021990911617905550875160208901516001600160801b03908116600160801b029116176000556040808901516001555133907fe5b754fb1abb7f01b499791d0b820ae3b6af3424ac1c59768edb53f4ec31a92990611038908f908d90918252602082015260400190565b60405180910390a2600654604051632770a7eb60e21b8152336004820152602481018e90526001600160a01b0390911690639dc29fac90604401600060405180830381600087803b15801561108c57600080fd5b505af11580156110a0573d6000803e3d6000fd5b5050604051600092503391508b908381818185875af1925050503d80600081146110e6576040519150601f19603f3d011682016040523d82523d6000602084013e6110eb565b606091505b5050905080604051806040016040528060018152602001603560f81b815250906111285760405162461bcd60e51b815260040161038d91906116c3565b5050505050505050505050505050565b6040805160608101825260008082526020820181905291810191909152604080516060810182526000546001600160801b03808216808452600160801b9092041660208301526001549282018390529091611193919061152e565b6001600160801b0390811680835242604084018190526020840151909216600160801b0217600055600155919050565b808460006111d18686611590565b815260208082019290925260409081016000208351928401516001600160801b03938416600160801b918516820217825591840151606085015190841693169091029190911760018201556080909101516002909101805460ff191691151591909117905550505050565b604080516060810182526002546001600160601b038082168352600160601b8204166020830152600160c01b900467ffffffffffffffff16918101829052600091829061128990426117e3565b9050600061129c620151806127106117f6565b905060006112ae600160401b836117f6565b905060008185602001516001600160601b0316856112cc91906117f6565b6112d69084611727565b86516112eb91906001600160601b03166117f6565b6112f59190611823565b9050600083611305600a876117f6565b61130f90866117e3565b87602001516001600160601b031661132791906117f6565b6113319190611823565b604080516060810182526001600160601b038581168083529316602082018190524267ffffffffffffffff1691909201819052600280546001600160c01b031916909317600160601b909202919091176001600160c01b0316600160c01b9091021790555095945050505050565b60008360006113ae8585611590565b815260200190815260200160002090509392505050565b6040805160a0810182526000808252602082018190529181018290526060810182905260808101919091528160800151604051806040016040528060018152602001601b60f91b8152509061142d5760405162461bcd60e51b815260040161038d91906116c3565b506000611438611138565b8051604085015185519293506001600160801b039182169202168161145f5761145f61180d565b046001600160801b03908116845260208281015160608601519186015190831692910216816114905761149061180d565b046001600160801b039081166020858101919091528201518116606085015290511660408301525090565b6000806114cd600160401b6064611845565b6001600160801b03168487602001516001600160801b03166114ef91906117f6565b6114f991906117f6565b905060008387600001516001600160801b03168761151791906117f6565b61152191906117f6565b9091109695505050505050565b6000806115416301e133806127106117f6565b9050600061154f84426117e3565b90508161155e6101f4836117f6565b61156890846117e3565b61157b906001600160801b0388166117f6565b6115859190611823565b925050505b92915050565b6040516bffffffffffffffffffffffff19606084901b1660208201526034810182905260009060540160405160208183030381529060405280519060200120905092915050565b610c6d8061189183390190565b80356001600160801b03811681146115fb57600080fd5b919050565b60006020828403121561161257600080fd5b61161b826115e4565b9392505050565b6000806040838503121561163557600080fd5b82359150611645602084016115e4565b90509250929050565b80356001600160a01b03811681146115fb57600080fd5b6000806040838503121561167857600080fd5b6116818361164e565b946020939093013593505050565b6000602082840312156116a157600080fd5b61161b8261164e565b6000602082840312156116bc57600080fd5b5035919050565b600060208083528351808285015260005b818110156116f0578581018301518582016040015282016116d4565b506000604082860101526040601f19601f8301168501019250505092915050565b634e487b7160e01b600052601160045260246000fd5b8082018082111561158a5761158a611711565b9384526001600160801b039283166020850152908216604084015216606082015260800190565b6001600160801b0381811683821601908082111561178157611781611711565b5092915050565b60006020828403121561179a57600080fd5b5051919050565b6001600160a01b039290921682526001600160801b0316602082015260400190565b6001600160801b0382811682821603908082111561178157611781611711565b8181038181111561158a5761158a611711565b808202811582820484141761158a5761158a611711565b634e487b7160e01b600052601260045260246000fd5b60008261184057634e487b7160e01b600052601260045260246000fd5b500490565b6001600160801b0381811683821602808216919082811461186857611868611711565b505092915050565b6001600160601b038181168382160190808211156117815761178161171156fe608060405234801561001057600080fd5b50600080546001600160a01b0319163390811782556040519091907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a360408051808201825260128152712832b3b0b9bab99029ba30b13632b1b7b4b760711b6020918201528151808301835260018152603160f81b9082015281517f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f918101919091527f23726b7e40db55f8d05a1da7ca162bbeda3c1e340b8c44f40305dd35a4161119918101919091527fc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc660608201524660808201523060a082015260c00160408051601f198184030181529190528051602090910120600555600180546001600160a01b03191633179055610b1d806101506000396000f3fe608060405234801561001057600080fd5b50600436106101165760003560e01c806370a08231116100a257806395d89b411161007157806395d89b411461028f5780639dc29fac146102b2578063a9059cbb146102c5578063d505accf146102d8578063dd62ed3e146102eb57600080fd5b806370a08231146102215780637ecebe00146102415780638da5cb5b146102615780638f32d59b1461027c57600080fd5b806330adf81f116100e957806330adf81f146101af578063313ce567146101d65780633644e515146101f057806340c10f19146101f95780634eb03f6e1461020e57600080fd5b806306fdde031461011b578063095ea7b31461016257806318160ddd1461018557806323b872dd1461019c575b600080fd5b61014c604051806040016040528060128152602001712832b3b0b9bab99029ba30b13632b1b7b4b760711b81525081565b60405161015991906108fa565b60405180910390f35b610175610170366004610964565b610316565b6040519015158152602001610159565b61018e60025481565b604051908152602001610159565b6101756101aa36600461098e565b61032d565b61018e7f6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c981565b6101de601281565b60405160ff9091168152602001610159565b61018e60055481565b61020c610207366004610964565b6103c2565b005b61020c61021c3660046109ca565b6104a1565b61018e61022f3660046109ca565b60036020526000908152604090205481565b61018e61024f3660046109ca565b60066020526000908152604090205481565b6000546040516001600160a01b039091168152602001610159565b6000546001600160a01b03163314610175565b61014c604051806040016040528060048152602001631c1554d160e21b81525081565b61020c6102c0366004610964565b61051d565b6101756102d3366004610964565b6105ed565b61020c6102e63660046109ec565b6105fa565b61018e6102f9366004610a5f565b600460209081526000928352604080842090915290825290205481565b60006103233384846107f0565b5060015b92915050565b6001600160a01b0383166000908152600460209081526040808320338452909152812054600019146103ad576001600160a01b0384166000908152600460209081526040808320338452909152902054610388908390610aa8565b6001600160a01b03851660009081526004602090815260408083203384529091529020555b6103b8848484610852565b5060019392505050565b6001805460408051808201909152918252600360fc1b60208301526001600160a01b0316331461040e5760405162461bcd60e51b815260040161040591906108fa565b60405180910390fd5b508060025461041d9190610abb565b6002556001600160a01b038216600090815260036020526040902054610444908290610abb565b6001600160a01b0383166000818152600360205260408082209390935591519091907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef906104959085815260200190565b60405180910390a35050565b6000546001600160a01b031633146104fb5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610405565b600180546001600160a01b0319166001600160a01b0392909216919091179055565b6001805460408051808201909152918252600360fc1b60208301526001600160a01b031633146105605760405162461bcd60e51b815260040161040591906108fa565b506001600160a01b038216600090815260036020526040902054610585908290610aa8565b6001600160a01b0383166000908152600360205260409020556002546105ac908290610aa8565b6002556040518181526000906001600160a01b038416907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef90602001610495565b6000610323338484610852565b6040805180820190915260018152603360f81b6020820152428510156106335760405162461bcd60e51b815260040161040591906108fa565b506005546001600160a01b038816600090815260066020526040812080549192917f6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9918b918b918b91908761068783610ace565b909155506040805160208101969096526001600160a01b0394851690860152929091166060840152608083015260a082015260c0810187905260e0016040516020818303038152906040528051906020012060405160200161070092919061190160f01b81526002810192909252602282015260420190565b60408051601f198184030181528282528051602091820120600080855291840180845281905260ff88169284019290925260608301869052608083018590529092509060019060a0016020604051602081039080840390855afa15801561076b573d6000803e3d6000fd5b5050604051601f1901519150506001600160a01b038116158015906107a15750886001600160a01b0316816001600160a01b0316145b604051806040016040528060018152602001600d60fa1b815250906107d95760405162461bcd60e51b815260040161040591906108fa565b506107e58989896107f0565b505050505050505050565b6001600160a01b0383811660008181526004602090815260408083209487168084529482529182902085905590518481527f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b92591015b60405180910390a3505050565b6001600160a01b038316600090815260036020526040902054610876908290610aa8565b6001600160a01b0380851660009081526003602052604080822093909355908416815220546108a6908290610abb565b6001600160a01b0380841660008181526003602052604090819020939093559151908516907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef906108459085815260200190565b600060208083528351808285015260005b818110156109275785810183015185820160400152820161090b565b506000604082860101526040601f19601f8301168501019250505092915050565b80356001600160a01b038116811461095f57600080fd5b919050565b6000806040838503121561097757600080fd5b61098083610948565b946020939093013593505050565b6000806000606084860312156109a357600080fd5b6109ac84610948565b92506109ba60208501610948565b9150604084013590509250925092565b6000602082840312156109dc57600080fd5b6109e582610948565b9392505050565b600080600080600080600060e0888a031215610a0757600080fd5b610a1088610948565b9650610a1e60208901610948565b95506040880135945060608801359350608088013560ff81168114610a4257600080fd5b9699959850939692959460a0840135945060c09093013592915050565b60008060408385031215610a7257600080fd5b610a7b83610948565b9150610a8960208401610948565b90509250929050565b634e487b7160e01b600052601160045260246000fd5b8181038181111561032757610327610a92565b8082018082111561032757610327610a92565b600060018201610ae057610ae0610a92565b506001019056fea26469706673582212208879218e8ca3c812367fd82c519716b572bb63a69356b63dc8f76591567d97df64736f6c63430008110033a2646970667358221220e71438e39246434e68debdc0136eb11e22a6fe853ab820d99f44ac9e69c29ab664736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600436106100c25760003560e01c8063b303ed3e1161007f578063c4d66de811610059578063c4d66de814610260578063cca23bf214610280578063d53bf23114610319578063db006a751461032c57600080fd5b8063b303ed3e146101ca578063b6c02c5314610220578063bcbaf4871461024057600080fd5b8063541ce9f9146100c75780635fd000f61461013b57806364f248e81461015f57806371a454fa1461017457806382b012f614610194578063a1b73c6d146101aa575b600080fd5b3480156100d357600080fd5b50600254610106906001600160601b0380821691600160601b810490911690600160c01b900467ffffffffffffffff1683565b604080516001600160601b03948516815293909216602084015267ffffffffffffffff16908201526060015b60405180910390f35b34801561014757600080fd5b5061015160045481565b604051908152602001610132565b61017261016d366004611600565b61034c565b005b34801561018057600080fd5b5061017261018f366004611622565b610487565b3480156101a057600080fd5b5061015160035481565b3480156101b657600080fd5b506101726101c5366004611622565b6106dd565b3480156101d657600080fd5b506000546001546101fa916001600160801b0380821692600160801b909204169083565b604080516001600160801b03948516815293909216602084015290820152606001610132565b34801561022c57600080fd5b5061017261023b366004611622565b6107d3565b34801561024c57600080fd5b5061017261025b366004611665565b61098a565b34801561026c57600080fd5b5061017261027b36600461168f565b610b3f565b34801561028c57600080fd5b506102de61029b3660046116aa565b6009602052600090815260409020805460018201546002909201546001600160801b0380831693600160801b938490048216938183169391049091169060ff1685565b604080516001600160801b0396871681529486166020860152928516928401929092529092166060820152901515608082015260a001610132565b610172610327366004611622565b610bea565b34801561033857600080fd5b506101726103473660046116aa565b610cde565b6040805180820190915260018152603160f81b6020820152346001600160801b038316146103965760405162461bcd60e51b815260040161038d91906116c3565b60405180910390fd5b5060006103a1611138565b905060006040518060a0016040528060006001600160801b03168152602001846001600160801b0316815260200183600001516001600160801b0316815260200183602001516001600160801b031681526020016001151581525090506000600354600161040f9190611727565b905061041e60093383856111c3565b8060038190555034600460008282546104379190611727565b90915550508251602084015160405133927fa02f9376a1f003e30f12b573dcf7a99ae2607b5cf56fbf5dee0383228415978e926104799286928a92909161173a565b60405180910390a250505050565b600061049161123c565b905060006104fb6104a46009338761139f565b6040805160a08101825282546001600160801b038082168352600160801b91829004811660208401526001850154808216948401949094529204909116606082015260029091015460ff16151560808201526113c5565b9050828160000181815161050f9190611761565b6001600160801b031690525060055460408051634c6afee560e11b8152905161060d92849286926001600160a01b03909216916398d5fdca916004808201926020929091908290030181865afa15801561056d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105919190611788565b600560009054906101000a90046001600160a01b03166001600160a01b031663b5cddab86040518163ffffffff1660e01b8152600401602060405180830381865afa1580156105e4573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106089190611788565b6114bb565b1561061757600080fd5b61062460093386846111c3565b336001600160a01b03167f232cbdfd6582521a06ac79bed2ac190979061faac72582f7f5e6c952ed26edea85858460400151856060015160405161066b949392919061173a565b60405180910390a26006546040516340c10f1960e01b81526001600160a01b03909116906340c10f19906106a590339087906004016117a1565b600060405180830381600087803b1580156106bf57600080fd5b505af11580156106d3573d6000803e3d6000fd5b5050505050505050565b60006106ee6104a46009338661139f565b9050818160000181815161070291906117c3565b6001600160801b031690525061071b60093385846111c3565b336001600160a01b03167f7cdcc5af821891e1d43bf859c7a221de2533f377030d7c5cafd81057dd403f15848484604001518560600151604051610762949392919061173a565b60405180910390a2600654604051632770a7eb60e21b81526001600160a01b0390911690639dc29fac9061079c90339086906004016117a1565b600060405180830381600087803b1580156107b657600080fd5b505af11580156107ca573d6000803e3d6000fd5b50505050505050565b60006107dd61123c565b905060006107f06104a46009338761139f565b9050828160200181815161080491906117c3565b6001600160801b031690525060055460408051634c6afee560e11b8152905161086292849286926001600160a01b03909216916398d5fdca916004808201926020929091908290030181865afa15801561056d573d6000803e3d6000fd5b1561086c57600080fd5b826001600160801b03166004600082825461088791906117e3565b9091555061089a905060093386846111c3565b336001600160a01b03167ff34b33e9c452e748ad708279471ec50823775c428f1f290f6c1289fdca7b0fb58585846040015185606001516040516108e1949392919061173a565b60405180910390a26000336001600160a01b0316846001600160801b03166040515b60006040518083038185875af1925050503d8060008114610940576040519150601f19603f3d011682016040523d82523d6000602084013e610945565b606091505b5050905080604051806040016040528060018152602001603560f81b815250906109825760405162461bcd60e51b815260040161038d91906116c3565b505050505050565b600061099461123c565b905060006109a76104a46009868661139f565b9050610a018183600560009054906101000a90046001600160a01b03166001600160a01b03166398d5fdca6040518163ffffffff1660e01b8152600401602060405180830381865afa15801561056d573d6000803e3d6000fd5b604051806040016040528060018152602001603760f81b81525090610a395760405162461bcd60e51b815260040161038d91906116c3565b506000608082018190526020820151600480546001600160801b03909216929091610a659084906117e3565b90915550610a78905060098585846111c3565b6040518381526001600160a01b0385169033907faef3faf684172084346f7dc2cc3bb1328d1cc23caec12dd9a82d4a4e56c00b179060200160405180910390a36006548151604051632770a7eb60e21b81526001600160a01b0390921691639dc29fac91610aeb913391906004016117a1565b600060405180830381600087803b158015610b0557600080fd5b505af1158015610b19573d6000803e3d6000fd5b505050506000336001600160a01b031682602001516001600160801b0316604051610903565b6006546040805180820190915260018152600360fc1b6020820152906001600160a01b031615610b825760405162461bcd60e51b815260040161038d91906116c3565b50600580546001600160a01b0319166001600160a01b038316179055604051610baa906115d7565b604051809103906000f080158015610bc6573d6000803e3d6000fd5b50600680546001600160a01b0319166001600160a01b039290921691909117905550565b6040805180820190915260018152603160f81b6020820152346001600160801b03831614610c2b5760405162461bcd60e51b815260040161038d91906116c3565b506000610c3d6104a46009338661139f565b90508181602001818151610c519190611761565b6001600160801b0390811690915260048054918516925090600090610c77908490611727565b90915550610c8a905060093385846111c3565b336001600160a01b03167f68b234653c61dd8426f429013f53cd43776a5855a2453189bb31a1c8195a3836848484604001518560600151604051610cd1949392919061173a565b60405180910390a2505050565b600080600560009054906101000a90046001600160a01b03166001600160a01b03166398d5fdca6040518163ffffffff1660e01b8152600401602060405180830381865afa158015610d34573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d589190611788565b600560009054906101000a90046001600160a01b03166001600160a01b031663b5cddab86040518163ffffffff1660e01b8152600401602060405180830381865afa158015610dab573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610dcf9190611788565b9092509050600082610de183866117f6565b610deb9190611823565b604080516060810182526000546001600160801b03808216808452600160801b90920416602083015260015492820183905292935091610e2a9161152e565b6001600160801b03168152600654604080516318160ddd60e01b815290516000926001600160a01b0316916318160ddd9160048083019260209291908290030181865afa158015610e7f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ea39190611788565b6004549091506000610eb588846117e3565b90506000610ec386846117e3565b85519091508290610edd906001600160801b0316866117f6565b610ee79190611823565b6001600160801b03908116865260208601516004548392610f099216906117f6565b610f139190611823565b6001600160801b031660208601526000610f2f856127106117f6565b600254909150600090610f5290600160601b90046001600160601b0316836117f6565b905060008b610f67600160401b6101f4611845565b6001600160801b0316610f7a91906117f6565b905082610f878284611727565b610f919190611823565b60028054600c90610fb3908490600160601b90046001600160601b0316611870565b82546001600160601b039182166101009390930a928302919092021990911617905550875160208901516001600160801b03908116600160801b029116176000556040808901516001555133907fe5b754fb1abb7f01b499791d0b820ae3b6af3424ac1c59768edb53f4ec31a92990611038908f908d90918252602082015260400190565b60405180910390a2600654604051632770a7eb60e21b8152336004820152602481018e90526001600160a01b0390911690639dc29fac90604401600060405180830381600087803b15801561108c57600080fd5b505af11580156110a0573d6000803e3d6000fd5b5050604051600092503391508b908381818185875af1925050503d80600081146110e6576040519150601f19603f3d011682016040523d82523d6000602084013e6110eb565b606091505b5050905080604051806040016040528060018152602001603560f81b815250906111285760405162461bcd60e51b815260040161038d91906116c3565b5050505050505050505050505050565b6040805160608101825260008082526020820181905291810191909152604080516060810182526000546001600160801b03808216808452600160801b9092041660208301526001549282018390529091611193919061152e565b6001600160801b0390811680835242604084018190526020840151909216600160801b0217600055600155919050565b808460006111d18686611590565b815260208082019290925260409081016000208351928401516001600160801b03938416600160801b918516820217825591840151606085015190841693169091029190911760018201556080909101516002909101805460ff191691151591909117905550505050565b604080516060810182526002546001600160601b038082168352600160601b8204166020830152600160c01b900467ffffffffffffffff16918101829052600091829061128990426117e3565b9050600061129c620151806127106117f6565b905060006112ae600160401b836117f6565b905060008185602001516001600160601b0316856112cc91906117f6565b6112d69084611727565b86516112eb91906001600160601b03166117f6565b6112f59190611823565b9050600083611305600a876117f6565b61130f90866117e3565b87602001516001600160601b031661132791906117f6565b6113319190611823565b604080516060810182526001600160601b038581168083529316602082018190524267ffffffffffffffff1691909201819052600280546001600160c01b031916909317600160601b909202919091176001600160c01b0316600160c01b9091021790555095945050505050565b60008360006113ae8585611590565b815260200190815260200160002090509392505050565b6040805160a0810182526000808252602082018190529181018290526060810182905260808101919091528160800151604051806040016040528060018152602001601b60f91b8152509061142d5760405162461bcd60e51b815260040161038d91906116c3565b506000611438611138565b8051604085015185519293506001600160801b039182169202168161145f5761145f61180d565b046001600160801b03908116845260208281015160608601519186015190831692910216816114905761149061180d565b046001600160801b039081166020858101919091528201518116606085015290511660408301525090565b6000806114cd600160401b6064611845565b6001600160801b03168487602001516001600160801b03166114ef91906117f6565b6114f991906117f6565b905060008387600001516001600160801b03168761151791906117f6565b61152191906117f6565b9091109695505050505050565b6000806115416301e133806127106117f6565b9050600061154f84426117e3565b90508161155e6101f4836117f6565b61156890846117e3565b61157b906001600160801b0388166117f6565b6115859190611823565b925050505b92915050565b6040516bffffffffffffffffffffffff19606084901b1660208201526034810182905260009060540160405160208183030381529060405280519060200120905092915050565b610c6d8061189183390190565b80356001600160801b03811681146115fb57600080fd5b919050565b60006020828403121561161257600080fd5b61161b826115e4565b9392505050565b6000806040838503121561163557600080fd5b82359150611645602084016115e4565b90509250929050565b80356001600160a01b03811681146115fb57600080fd5b6000806040838503121561167857600080fd5b6116818361164e565b946020939093013593505050565b6000602082840312156116a157600080fd5b61161b8261164e565b6000602082840312156116bc57600080fd5b5035919050565b600060208083528351808285015260005b818110156116f0578581018301518582016040015282016116d4565b506000604082860101526040601f19601f8301168501019250505092915050565b634e487b7160e01b600052601160045260246000fd5b8082018082111561158a5761158a611711565b9384526001600160801b039283166020850152908216604084015216606082015260800190565b6001600160801b0381811683821601908082111561178157611781611711565b5092915050565b60006020828403121561179a57600080fd5b5051919050565b6001600160a01b039290921682526001600160801b0316602082015260400190565b6001600160801b0382811682821603908082111561178157611781611711565b8181038181111561158a5761158a611711565b808202811582820484141761158a5761158a611711565b634e487b7160e01b600052601260045260246000fd5b60008261184057634e487b7160e01b600052601260045260246000fd5b500490565b6001600160801b0381811683821602808216919082811461186857611868611711565b505092915050565b6001600160601b038181168382160190808211156117815761178161171156fe608060405234801561001057600080fd5b50600080546001600160a01b0319163390811782556040519091907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a360408051808201825260128152712832b3b0b9bab99029ba30b13632b1b7b4b760711b6020918201528151808301835260018152603160f81b9082015281517f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f918101919091527f23726b7e40db55f8d05a1da7ca162bbeda3c1e340b8c44f40305dd35a4161119918101919091527fc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc660608201524660808201523060a082015260c00160408051601f198184030181529190528051602090910120600555600180546001600160a01b03191633179055610b1d806101506000396000f3fe608060405234801561001057600080fd5b50600436106101165760003560e01c806370a08231116100a257806395d89b411161007157806395d89b411461028f5780639dc29fac146102b2578063a9059cbb146102c5578063d505accf146102d8578063dd62ed3e146102eb57600080fd5b806370a08231146102215780637ecebe00146102415780638da5cb5b146102615780638f32d59b1461027c57600080fd5b806330adf81f116100e957806330adf81f146101af578063313ce567146101d65780633644e515146101f057806340c10f19146101f95780634eb03f6e1461020e57600080fd5b806306fdde031461011b578063095ea7b31461016257806318160ddd1461018557806323b872dd1461019c575b600080fd5b61014c604051806040016040528060128152602001712832b3b0b9bab99029ba30b13632b1b7b4b760711b81525081565b60405161015991906108fa565b60405180910390f35b610175610170366004610964565b610316565b6040519015158152602001610159565b61018e60025481565b604051908152602001610159565b6101756101aa36600461098e565b61032d565b61018e7f6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c981565b6101de601281565b60405160ff9091168152602001610159565b61018e60055481565b61020c610207366004610964565b6103c2565b005b61020c61021c3660046109ca565b6104a1565b61018e61022f3660046109ca565b60036020526000908152604090205481565b61018e61024f3660046109ca565b60066020526000908152604090205481565b6000546040516001600160a01b039091168152602001610159565b6000546001600160a01b03163314610175565b61014c604051806040016040528060048152602001631c1554d160e21b81525081565b61020c6102c0366004610964565b61051d565b6101756102d3366004610964565b6105ed565b61020c6102e63660046109ec565b6105fa565b61018e6102f9366004610a5f565b600460209081526000928352604080842090915290825290205481565b60006103233384846107f0565b5060015b92915050565b6001600160a01b0383166000908152600460209081526040808320338452909152812054600019146103ad576001600160a01b0384166000908152600460209081526040808320338452909152902054610388908390610aa8565b6001600160a01b03851660009081526004602090815260408083203384529091529020555b6103b8848484610852565b5060019392505050565b6001805460408051808201909152918252600360fc1b60208301526001600160a01b0316331461040e5760405162461bcd60e51b815260040161040591906108fa565b60405180910390fd5b508060025461041d9190610abb565b6002556001600160a01b038216600090815260036020526040902054610444908290610abb565b6001600160a01b0383166000818152600360205260408082209390935591519091907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef906104959085815260200190565b60405180910390a35050565b6000546001600160a01b031633146104fb5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610405565b600180546001600160a01b0319166001600160a01b0392909216919091179055565b6001805460408051808201909152918252600360fc1b60208301526001600160a01b031633146105605760405162461bcd60e51b815260040161040591906108fa565b506001600160a01b038216600090815260036020526040902054610585908290610aa8565b6001600160a01b0383166000908152600360205260409020556002546105ac908290610aa8565b6002556040518181526000906001600160a01b038416907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef90602001610495565b6000610323338484610852565b6040805180820190915260018152603360f81b6020820152428510156106335760405162461bcd60e51b815260040161040591906108fa565b506005546001600160a01b038816600090815260066020526040812080549192917f6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9918b918b918b91908761068783610ace565b909155506040805160208101969096526001600160a01b0394851690860152929091166060840152608083015260a082015260c0810187905260e0016040516020818303038152906040528051906020012060405160200161070092919061190160f01b81526002810192909252602282015260420190565b60408051601f198184030181528282528051602091820120600080855291840180845281905260ff88169284019290925260608301869052608083018590529092509060019060a0016020604051602081039080840390855afa15801561076b573d6000803e3d6000fd5b5050604051601f1901519150506001600160a01b038116158015906107a15750886001600160a01b0316816001600160a01b0316145b604051806040016040528060018152602001600d60fa1b815250906107d95760405162461bcd60e51b815260040161040591906108fa565b506107e58989896107f0565b505050505050505050565b6001600160a01b0383811660008181526004602090815260408083209487168084529482529182902085905590518481527f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b92591015b60405180910390a3505050565b6001600160a01b038316600090815260036020526040902054610876908290610aa8565b6001600160a01b0380851660009081526003602052604080822093909355908416815220546108a6908290610abb565b6001600160a01b0380841660008181526003602052604090819020939093559151908516907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef906108459085815260200190565b600060208083528351808285015260005b818110156109275785810183015185820160400152820161090b565b506000604082860101526040601f19601f8301168501019250505092915050565b80356001600160a01b038116811461095f57600080fd5b919050565b6000806040838503121561097757600080fd5b61098083610948565b946020939093013593505050565b6000806000606084860312156109a357600080fd5b6109ac84610948565b92506109ba60208501610948565b9150604084013590509250925092565b6000602082840312156109dc57600080fd5b6109e582610948565b9392505050565b600080600080600080600060e0888a031215610a0757600080fd5b610a1088610948565b9650610a1e60208901610948565b95506040880135945060608801359350608088013560ff81168114610a4257600080fd5b9699959850939692959460a0840135945060c09093013592915050565b60008060408385031215610a7257600080fd5b610a7b83610948565b9150610a8960208401610948565b90509250929050565b634e487b7160e01b600052601160045260246000fd5b8181038181111561032757610327610a92565b8082018082111561032757610327610a92565b600060018201610ae057610ae0610a92565b506001019056fea26469706673582212208879218e8ca3c812367fd82c519716b572bb63a69356b63dc8f76591567d97df64736f6c63430008110033a2646970667358221220e71438e39246434e68debdc0136eb11e22a6fe853ab820d99f44ac9e69c29ab664736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2168,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "rebaseIndices",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_struct(RebaseIndices)2158_storage"
+      },
+      {
+        "astId": 2171,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "minimumCollRatio",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_struct(MinimumCollRatio)2165_storage"
+      },
+      {
+        "astId": 2173,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "lastVaultId",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 2175,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "collLocked",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 2178,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "pricefeed",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_contract(IPriceFeed)3368"
+      },
+      {
+        "astId": 2181,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "pegasusUSD",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_contract(PegasusUSD)2096"
+      },
+      {
+        "astId": 2184,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "pyth",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_contract(IPyth)3505"
+      },
+      {
+        "astId": 2186,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "price",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint128"
+      },
+      {
+        "astId": 2191,
+        "contract": "contracts/VaultManager.sol:VaultManager",
+        "label": "vaults",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_bytes32,t_struct(State)3750_storage)"
+      }
+    ],
+    "types": {
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(IPriceFeed)3368": {
+        "encoding": "inplace",
+        "label": "contract IPriceFeed",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IPyth)3505": {
+        "encoding": "inplace",
+        "label": "contract IPyth",
+        "numberOfBytes": "20"
+      },
+      "t_contract(PegasusUSD)2096": {
+        "encoding": "inplace",
+        "label": "contract PegasusUSD",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_bytes32,t_struct(State)3750_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct Vault.State)",
+        "numberOfBytes": "32",
+        "value": "t_struct(State)3750_storage"
+      },
+      "t_struct(MinimumCollRatio)2165_storage": {
+        "encoding": "inplace",
+        "label": "struct VaultManager.MinimumCollRatio",
+        "members": [
+          {
+            "astId": 2160,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "ratio",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint96"
+          },
+          {
+            "astId": 2162,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "dRatio",
+            "offset": 12,
+            "slot": "0",
+            "type": "t_uint96"
+          },
+          {
+            "astId": 2164,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "lastUpdate",
+            "offset": 24,
+            "slot": "0",
+            "type": "t_uint64"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_struct(RebaseIndices)2158_storage": {
+        "encoding": "inplace",
+        "label": "struct VaultManager.RebaseIndices",
+        "members": [
+          {
+            "astId": 2153,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "debtRebaseIndex",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 2155,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "collRebaseIndex",
+            "offset": 16,
+            "slot": "0",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 2157,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "lastUpdate",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(State)3750_storage": {
+        "encoding": "inplace",
+        "label": "struct Vault.State",
+        "members": [
+          {
+            "astId": 3741,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "debt",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 3743,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "collateral",
+            "offset": 16,
+            "slot": "0",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 3745,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "lastDebtRebaseIndex",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 3747,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "lastCollRebaseIndex",
+            "offset": 16,
+            "slot": "1",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 3749,
+            "contract": "contracts/VaultManager.sol:VaultManager",
+            "label": "isActive",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_uint128": {
+        "encoding": "inplace",
+        "label": "uint128",
+        "numberOfBytes": "16"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint64": {
+        "encoding": "inplace",
+        "label": "uint64",
+        "numberOfBytes": "8"
+      },
+      "t_uint96": {
+        "encoding": "inplace",
+        "label": "uint96",
+        "numberOfBytes": "12"
+      }
+    }
+  }
+}

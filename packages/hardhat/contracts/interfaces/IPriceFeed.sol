@@ -2,13 +2,11 @@
 pragma solidity ^0.8.9;
 
 interface IPriceFeed {
-    // -- Events --
-    event UpdatePrice(uint128 updatedAt, uint128 price);
+	// -- Events --
+	event UpdatePrice(uint128 updatedAt, uint128 price);
 
-    // -- Functions --
-    function updatePrice() external;
+	// -- Functions --
+	function getPrice() external view returns (uint256);
 
-    function getPrice() external view returns (uint128);
-
-    function getScale() external view returns (uint);
+	function getScale() external view returns (uint);
 }

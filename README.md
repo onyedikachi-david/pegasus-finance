@@ -1,50 +1,51 @@
-
 # Pegasus Finance
+
+[Verified Deployed Vault Address:](https://sepolia-blockscout.lisk.com/address/0xb7738817DbD16F9e588b4F493D283d1C729cd682#code)
 
 ## Overview
 
-The Pegasus Finance is a decentralized finance (DeFi) application built on the Canto blockchain. It is designed to manage vaults where users can deposit Canto as collateral and mint a stablecoin, PegasusUSD, against it. The project aims to provide a robust platform for users to leverage their Canto holdings without selling them, offering a flexible way to manage debt and collateral through smart contracts.
+Pegasus Finance is a decentralized finance (DeFi) application built on the Lisk blockchain. It enables users to deposit LSK tokens as collateral to mint a stablecoin, PegasusUSD, against it. This platform allows users to leverage their LSK holdings without selling them, providing a flexible means to manage debt and collateral through smart contracts.
 
 ## Features
 
-1. High LTV with Low Minimum Collateral Requirement: Drawing inspiration from Liquity, Pegasus Finance has developed a unique redemption system that maintains a hard price floor of  $1. Unlike Liquity, this system efficiently manages the Minimum Collateral Requirement  (MCR) without significant increases:
+1. **High LTV with Low Minimum Collateral Requirement:** Inspired by similar platforms, Pegasus Finance implements a unique redemption system that ensures a hard price floor of $1 for PegasusUSD. This system manages the Minimum Collateral Requirement (MCR) efficiently:
 
- - Collateral is pooled from all vaults, allowing for pro-rated redemption from each vault, which remains efficient even with a million active vaults.
+   - Collateral from all vaults is pooled, facilitating pro-rated redemption across vaults, maintaining efficiency regardless of the number of active vaults.
 
- - A controlled, small increase in MCR further disincentivizes excessive minting while maintaining system efficiency.
+   - A modest increase in MCR discourages excessive minting while preserving system efficiency.
 
-2. Negative Interest Rates: To combat the challenges of bear markets where the stablecoin's value might exceed  $1 due to low borrowing demand, Pegasus Finance introduces an effective negative interest rate mechanism:
+2. **Negative Interest Rates:** To address the challenge of bear markets where the stablecoin's value may exceed $1 due to reduced borrowing demand, Pegasus Finance employs a negative interest rate mechanism:
 
- - With each redemption, the MCR incrementally increases, reinforcing the  $1 floor but also maintaining the price above  $1 in less volatile markets.
+   - Each redemption slightly raises the MCR, reinforcing the $1 floor and keeping the price above $1 in less volatile conditions.
 
- - The algorithm adjusts by continuously reducing the MCR to a cap of  105%, providing flexibility for those who minted at higher ranges  (120+% MCR), effectively acting as a negative interest rate to re-peg the price by increasing supply.
+   - The system dynamically reduces the MCR to a maximum of 105%, offering relief to those who minted at higher MCR levels, effectively functioning as a negative interest rate to stabilize the price by expanding supply.
 
-3. Miscellaneous Features: Designed with leverage traders in mind, the protocol supports the creation of multiple vaults, enabling users to manage various trading strategies effectively.
+3. **Miscellaneous Features:** Tailored for leverage traders, the protocol permits the creation of multiple vaults, aiding in the management of diverse trading strategies.
 
-TLDR; Pegasus Finance offers an innovative approach to USD borrowing with high LTV and low MCR, maintaining stability and efficiency in the stablecoin market.
+TL;DR: Pegasus Finance presents an innovative solution for USD borrowing with high Loan-to-Value (LTV) ratios and minimal MCR, ensuring stability and efficiency within the stablecoin ecosystem.
 
 ## Technical Details
 
 ### Smart Contracts
 
-- **VaultManager.sol**: Main contract managing the vaults, including creation, updates, and liquidations.
-- **PegasusUSD.sol**: ERC-20 token contract for the mintable and burnable stablecoin pegged to the USD.
-- **PriceFeed Interface**: Provides real-time price data for Canto, used for calculating collateral value.
-- **Libraries**: Includes various helper libraries for fixed-point arithmetic, error handling, and constants.
+- **VaultManager.sol**: Manages vault operations such as creation, updates, and liquidations.
+- **PegasusUSD.sol**: ERC-20 compliant token contract for the mintable and burnable stablecoin pegged to the USD.
+- **PriceFeed Interface**: Supplies real-time price data for LSK, essential for determining collateral value Using RedStone.
+- **Libraries**: Assists with fixed-point arithmetic, error handling, and constant values.
 
 ### Key Functions
 
-- `createVault(uint128 initialColl)`: Create a new vault with specified initial Canto collateral.
-- `increaseVaultColl(uint vaultId, uint128 collIncrease)`: Increase the collateral in a specific vault.
-- `decreaseVaultColl(uint vaultId, uint128 collDecrease)`: Decrease the collateral in a specific vault.
-- `increaseVaultDebt(uint vaultId, uint128 debtIncrease)`: Increase the debt in a specific vault by minting PegasusUSD.
-- `decreaseVaultDebt(uint vaultId, uint128 debtDecrease)`: Decrease the debt in a specific vault by burning PegasusUSD.
-- `liquidate(address owner, uint vaultId)`: Liquidate an undercollateralized vault.
+- `createVault(uint128 initialColl)`: Establishes a new vault with the specified initial LSK collateral.
+- `increaseVaultColl(uint vaultId, uint128 collIncrease)`: Adds collateral to a specific vault.
+- `decreaseVaultColl(uint vaultId, uint128 collDecrease)`: Reduces collateral in a specific vault.
+- `increaseVaultDebt(uint vaultId, uint128 debtIncrease)`: Increases debt in a specific vault by minting PegasusUSD.
+- `decreaseVaultDebt(uint vaultId, uint128 debtDecrease)`: Reduces debt in a specific vault by burning PegasusUSD.
+- `liquidate(address owner, uint vaultId)`: Initiates liquidation of an undercollateralized vault.
 
 ### Technologies Used
 
-- **Solidity**: Programming language for writing smart contracts on Canto.
-- **Hardhat**: Development environment for deployment and testing.
+- **Solidity**: The programming language for developing smart contracts on the Lisk blockchain.
+- **Hardhat**: A development framework for deploying and testing smart contracts.
 
 ## Installation and Setup
 
@@ -53,52 +54,14 @@ TLDR; Pegasus Finance offers an innovative approach to USD borrowing with high L
    - Git
 
 2. **Clone the Repository**:
-
-   ```bash
-   git clone https://github.com/onyedikachi-david/pegasus-finance.git
-   cd pegasus-finance
-   ```
-
-3. **Install Dependencies**:
-
-   ```bash
-   yarn install
-   ```
-
-4. **Compile Contracts**:
-
-   ```bash
-   yarn compile
-   ```
-
-5. **Deploy Contracts**:
-
-   ```bash
-   yarn deploy
-   ```
-
-6. **Run Tests**:
-
-   ```bash
-   yarn hardhat:test
-   ```
+   - git clone <https://github.com/onyediakchi-david/pegasus-finance.git>
+   - cd pegasus-finance
 
 ## Demo
 
-Below are images from our demo showcasing the user interface for managing vaults:
 
-![Create Vault](./images/create_vault.png)
-*Creating a new vault*
-
-![Manage Vault](./images/manage_vault.png)
-*Managing an existing vault*
 
 ## Future Work
 
-- **Integration with other DeFi protocols** on the Canto network to provide additional services like swapping, staking, and yield farming.
-- **Governance features** to allow PegasusUSD holders to vote on system parameters.
-- **Advanced liquidation mechanisms** to handle large market movements more effectively.
+- Alot 
 
-## Conclusion
-
-The Pegasus finance provides a foundational platform for leveraging Canto assets in a secure and flexible manner. It demonstrates the potential of smart contracts to revolutionize financial services by offering decentralized, transparent, and efficient solutions.
