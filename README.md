@@ -35,6 +35,9 @@ TL;DR: Pegasus Finance presents an innovative solution for USD borrowing with hi
 
 ### Key Functions
 
+
+
+
 - `createVault(uint128 initialColl)`: Establishes a new vault with the specified initial LSK collateral.
 - `increaseVaultColl(uint vaultId, uint128 collIncrease)`: Adds collateral to a specific vault.
 - `decreaseVaultColl(uint vaultId, uint128 collDecrease)`: Reduces collateral in a specific vault.
@@ -59,6 +62,7 @@ TL;DR: Pegasus Finance presents an innovative solution for USD borrowing with hi
 
 ## Demo
 
+[Demo](https://github.com/onyedikachi-david/pegasus-finance/assets/51977119/ac0665c2-6eec-436a-913c-56b9fbf5cdcd)
 
 
 ## Future Work
